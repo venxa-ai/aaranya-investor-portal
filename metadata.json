@@ -1,0 +1,6 @@
+{
+  "name": "Aaranya Luxury Presentation Hub",
+  "description": "Premium interactive corporate presentation and investment pitch deck for AARANYA™ Botanical Hair Transformation Company, featuring live AI Investor Copilot and gold foil cover customization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

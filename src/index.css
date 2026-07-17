@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-forest: #123524;
+  --color-forest-light: #1e4c35;
+  --color-forest-dark: #0a1f15;
+  --color-gold: #C5A059;
+  --color-gold-light: #E8DCC4;
+  --color-gold-dark: #8A6D3B;
+  --color-beige: #FAF9F6;
+  --color-beige-dark: #f2ebd9;
+}
+
+@layer utilities {
+  /* Matte gold foil gradient text */
+  .text-gold-foil {
+    background: linear-gradient(135deg, #E8DCC4 0%, #C5A059 50%, #8A6D3B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Matte gold foil border gradient */
+  .border-gold-foil {
+    border-image: linear-gradient(135deg, #E8DCC4, #C5A059, #8A6D3B) 1;
+  }
+  
+  /* Subtle luxurious gold glow */
+  .shadow-gold-glow {
+    box-shadow: 0 0 25px rgba(197, 160, 89, 0.2);
+  }
+  
+  /* Luxury marble paper texture background overlay */
+  .bg-marble-texture {
+    background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 100%),
+                      linear-gradient(rgba(18, 53, 36, 0.95), rgba(10, 31, 21, 0.98));
+  }
+  
+  /* Smooth gold button gradient */
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #C5A059 0%, #8A6D3B 100%);
+  }
+}
+
+/* Custom scrollbars for presentation viewer */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a1f15;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8DCC4;
+}
+
