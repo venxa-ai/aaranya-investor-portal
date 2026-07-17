@@ -678,7 +678,7 @@
             background: var(--white);
             box-shadow: 0 20px 50px rgba(9, 34, 25, 0.12);
             position: relative;
-            aspect-ratio: 1/1;
+            aspect-ratio: 3/4;
         }
 
         .product-visual img {
@@ -1088,19 +1088,38 @@
             background: var(--white);
         }
 
-        .founder-grid {
+        .founders-dual-grid {
             display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 60px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .founder-card {
+            background: var(--cream);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            padding: 35px;
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 25px;
             align-items: center;
+            transition: var(--transition);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 45px rgba(9, 34, 25, 0.08);
         }
 
         .founder-img {
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1.5px solid var(--gold);
-            box-shadow: 0 20px 45px rgba(9, 34, 25, 0.1);
-            aspect-ratio: 1/1;
+            box-shadow: 0 15px 35px rgba(9, 34, 25, 0.1);
+            aspect-ratio: 3/4;
+            height: 100%;
         }
 
         .founder-img img {
@@ -1109,36 +1128,58 @@
             object-fit: cover;
         }
 
-        .founder-info h3 {
-            font-size: 32px;
+        .founder-details h4.founder-name {
+            font-family: var(--font-serif);
+            font-size: 22px;
             color: var(--forest);
             margin-bottom: 4px;
+            margin-top: 0;
         }
 
         .founder-title {
             font-family: var(--font-mono);
-            font-size: 12px;
+            font-size: 11px;
             color: var(--gold-dark);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             display: block;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .founder-quote {
             font-family: var(--font-serif);
-            font-size: 18px;
+            font-size: 14px;
             font-style: italic;
             color: var(--forest-light);
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.5;
+            margin-bottom: 16px;
             position: relative;
         }
 
         .founder-bio {
-            font-size: 15px;
+            font-size: 13.5px;
             color: rgba(9, 34, 25, 0.7);
-            line-height: 1.7;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1199px) {
+            .founder-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+                padding: 25px;
+            }
+            .founder-img {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .founders-dual-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
 
         /* 14. CONTACT SECTION */
@@ -1401,7 +1442,7 @@
         <div class="container nav-container">
             <a href="#" class="logo-area">
                 <div class="logo-circle">
-                    <img src="aaranya_logo.jpg" alt="Aaranya Logo">
+                    <img src="aaranya_logo.jpg" alt="Aaranya Logo" referrerPolicy="no-referrer">
                 </div>
                 <div class="logo-text">
                     <span class="logo-title">AARANYA™</span>
@@ -1450,7 +1491,7 @@
                 </div>
             </div>
             <div class="hero-logo-visual">
-                <img src="aaranya_logo.jpg" alt="Aaranya Brand Logo">
+                <img src="aaranya_logo.jpg" alt="Aaranya Brand Logo" referrerPolicy="no-referrer">
             </div>
         </div>
     </section>
@@ -1603,7 +1644,7 @@
             <div class="product-grid">
                 <div class="product-visual">
                     <span class="product-badge">Hero Product</span>
-                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80" alt="Aaranya Rosemary & Bhringraj oil bottle">
+                    <img src="aaranya_hair_oil.jpg" alt="Aaranya Rosemary & Bhringraj Hair Oil bottle" referrerPolicy="no-referrer">
                 </div>
                 <div class="product-info">
                     <span class="section-tag">05 / The Formulation</span>
@@ -1884,19 +1925,40 @@
         </div>
     </section>
 
-    <!-- 13. FOUNDER & BOARD ADVISORS -->
+    <!-- 13. FOUNDERS & LEADERSHIP -->
     <section class="founder">
         <div class="container">
-            <div class="founder-grid">
-                <div class="founder-img">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Aaranya Founder representation">
+            <div class="section-header">
+                <span class="section-tag" style="text-align: center; display: block; margin: 0 auto 15px auto; width: max-content;">11 / Leadership</span>
+                <h2 class="section-title" style="text-align: center; margin-bottom: 15px;">The <span>Founding Sisters</span></h2>
+                <p class="section-desc" style="text-align: center; max-width: 650px; margin: 0 auto 50px auto;">Combining clinical expertise, digital vision, and premium organic sourcing to construct India's high-trust hair transformation ecosystem.</p>
+            </div>
+            
+            <div class="founders-dual-grid">
+                <!-- Sister 1 -->
+                <div class="founder-card">
+                    <div class="founder-img">
+                        <img src="aaranya_model.jpg" alt="Aaranya Sharma - Founder & CEO" referrerPolicy="no-referrer">
+                    </div>
+                    <div class="founder-details">
+                        <h4 class="founder-name">Aaranya Sharma</h4>
+                        <span class="founder-title">Founder & Chief Executive</span>
+                        <p class="founder-quote">"AARANYA™ is a convergence of scientific rigor and classical botany, delivering certified, visible hair transformation cycles."</p>
+                        <p class="founder-bio">Driven by personal hair transformation struggles, Aaranya pioneered our clinical Ayurveda formulation and AI-driven computer vision diagnostic model.</p>
+                    </div>
                 </div>
-                <div class="founder-info">
-                    <span class="section-tag">11 / Leadership</span>
-                    <h3>Pioneering High-Trust Wellness</h3>
-                    <span class="founder-title">First-Generation Promoter</span>
-                    <p class="founder-quote">"AARANYA™ represents a perfect convergence of scientific rigor and classical botany. We are not just building a product brand—we are constructing a community-led ecosystem where digital technology directly proves clinical hair transformations."</p>
-                    <p class="founder-bio">Driven by personal hair transformation struggles, our founder represents a new class of Indian entrepreneurs focused on clean, premium wellness solutions. Guided by an experienced advisory board of cosmetic chemists, digital marketing experts, and clinical trichologists, the company is built on absolute financial conservatism, complete transparency, and high capital yield metrics.</p>
+
+                <!-- Sister 2 -->
+                <div class="founder-card">
+                    <div class="founder-img">
+                        <img src="aaranya_sister.jpg" alt="Ananya Sharma - Co-Founder & Chief Product Officer" referrerPolicy="no-referrer">
+                    </div>
+                    <div class="founder-details">
+                        <h4 class="founder-name">Ananya Sharma</h4>
+                        <span class="founder-title">Co-Founder & Product Officer</span>
+                        <p class="founder-quote">"We source only pure organic botanicals, ensuring every drop of formulation delivers optimal bioactive nourishment and active healing."</p>
+                        <p class="founder-bio">Ananya oversees our ethical botanical sourcing and clean clinical formulations, working directly with organic growers to maintain the highest standards.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1976,7 +2038,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                        <img src="aaranya_logo.jpg" alt="Aaranya Logo" style="width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid var(--gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);">
+                        <img src="aaranya_logo.jpg" alt="Aaranya Logo" style="width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid var(--gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);" referrerPolicy="no-referrer">
                         <h4 style="font-family: var(--font-serif); font-size: 24px; color: var(--gold-light); letter-spacing: 0.1em; margin: 0;">AARANYA™</h4>
                     </div>
                     <p>Establishing India's most advanced, high-trust premium botanical scalp and hair health ecosystem through clinical Ayurveda and computer vision diagnostics.</p>
