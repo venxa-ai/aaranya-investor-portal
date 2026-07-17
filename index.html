@@ -50,6 +50,7 @@
         /* CUSTOM SCROLLBAR */
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
         }
         ::-webkit-scrollbar-track {
             background: var(--forest-dark);
@@ -60,6 +61,22 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: var(--gold-light);
+        }
+
+        /* Table Wrapper specific high-contrast scrollbars */
+        .table-wrapper::-webkit-scrollbar, .loan-table-wrapper::-webkit-scrollbar {
+            height: 8px !important;
+        }
+        .table-wrapper::-webkit-scrollbar-track, .loan-table-wrapper::-webkit-scrollbar-track {
+            background: rgba(9, 34, 25, 0.05) !important;
+            border-radius: 4px !important;
+        }
+        .table-wrapper::-webkit-scrollbar-thumb, .loan-table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--gold) !important;
+            border-radius: 4px !important;
+        }
+        .table-wrapper::-webkit-scrollbar-thumb:hover, .loan-table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-light) !important;
         }
 
         /* COMMON LAYOUTS & TYPOGRAPHY */
@@ -129,7 +146,7 @@
             z-index: 1000;
             background: rgba(9, 34, 25, 0.92);
             backdrop-filter: blur(12px);
-            border-b: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
             transition: var(--transition);
         }
 
@@ -607,6 +624,27 @@
             background: var(--white);
         }
 
+        .scroll-hint {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: var(--gold-dark);
+            margin: 20px auto 0 auto;
+            font-family: var(--font-mono);
+            letter-spacing: 0.05em;
+            background: rgba(212, 175, 55, 0.08);
+            padding: 8px 16px;
+            border-radius: 30px;
+            width: max-content;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        @keyframes swipe {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(6px); }
+        }
+
         .table-wrapper {
             width: 100%;
             overflow-x: auto;
@@ -929,8 +967,9 @@
             background: rgba(18, 60, 45, 0.6);
             border: 1px solid var(--glass-border);
             border-radius: 12px;
-            overflow: hidden;
+            overflow-x: auto;
             backdrop-filter: blur(8px);
+            -webkit-overflow-scrolling: touch;
         }
 
         .loan-table-wrapper table {
@@ -1411,11 +1450,59 @@
             .right {
                 left: 0;
             }
+            
+            /* Ensure tables are scrollable on mobile and don't squeeze columns */
+            .table-wrapper, .loan-table-wrapper {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch;
+                width: 100% !important;
+            }
+            .table-wrapper table {
+                min-width: 700px !important;
+                width: 100% !important;
+                table-layout: auto !important;
+            }
+            .loan-table-wrapper table {
+                min-width: 450px !important;
+                width: 100% !important;
+                table-layout: auto !important;
+            }
+            .scroll-hint {
+                display: inline-flex !important;
+            }
+            /* Reset hero logo visual container restricted width on mobile */
+            .hero-logo-visual {
+                width: 100% !important;
+            }
         }
 
         @media (max-width: 767px) {
             .nav-links {
-                display: none; /* Mobile Drawer fallback */
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(9, 34, 25, 0.98);
+                backdrop-filter: blur(15px);
+                padding: 24px;
+                border-bottom: 1.5px solid var(--gold);
+                gap: 16px;
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            }
+            .nav-links.active {
+                display: flex !important;
+            }
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                display: block;
+                font-size: 15px;
+                padding: 8px 0;
+                width: 100%;
             }
             .mobile-toggle {
                 display: block;
@@ -1591,6 +1678,12 @@
                 <span class="section-tag">04 / Competitor Benchmarking</span>
                 <h2 class="section-title">A Rigorous <span>Market Comparison</span></h2>
                 <p class="section-desc">Strategic analysis of key luxury and mass-market hair-care competitors inside India's growing INR 28,000 Crore industry.</p>
+            </div>
+
+            <!-- Scroll Hint for Mobile -->
+            <div class="scroll-hint" style="margin-bottom: 20px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; animation: swipe 1.5s ease-in-out infinite;"><path d="M17 3L21 7L17 11"></path><path d="M7 21L3 17L7 13"></path><path d="M21 7H3"></path><path d="M3 17H21"></path></svg>
+                <span>Scroll horizontally to view full table ↔</span>
             </div>
 
             <div class="table-wrapper">
@@ -1775,6 +1868,12 @@
                         <li style="color: rgba(255,255,255,0.95);">Conservative payback schedule: Completed within 18 Months</li>
                         <li style="color: rgba(255,255,255,0.95);">Interest Cover Ratio: Healthy steady-state of 6.2x</li>
                     </ul>
+                </div>
+
+                <!-- Scroll Hint for Mobile -->
+                <div class="scroll-hint" style="margin-bottom: 15px; color: var(--gold); border-color: rgba(212, 175, 55, 0.35); background: rgba(212, 175, 55, 0.12);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; animation: swipe 1.5s ease-in-out infinite;"><path d="M17 3L21 7L17 11"></path><path d="M7 21L3 17L7 13"></path><path d="M21 7H3"></path><path d="M3 17H21"></path></svg>
+                    <span>Scroll horizontally ↔</span>
                 </div>
 
                 <div class="loan-table-wrapper">
@@ -2098,20 +2197,18 @@
         // Toggle Mobile Menu
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'rgba(9, 34, 25, 0.98)';
-                navLinks.style.padding = '20px';
-                navLinks.style.borderBottom = '1px solid var(--gold)';
-            }
+            navLinks.classList.toggle('active');
         }
+
+        // Close mobile menu when clicking any link inside it
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    const navLinks = document.querySelector('.nav-links');
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
 
         // Three-Scenario Projections Controller
         const scenarioData = {

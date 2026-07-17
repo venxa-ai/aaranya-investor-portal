@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "mkdir -p dist && cp index.html dist/index.html",
+    "build": "mkdir -p dist && cp index.html dist/index.html && cp aaranya_*.jpg dist/ || true",
     "lint": "echo 'No lint required for single HTML file'"
   },
   "dependencies": {
