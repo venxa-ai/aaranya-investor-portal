@@ -1801,9 +1801,22 @@
             </div>
 
             <!-- Scroll Hint for Mobile -->
-            <div class="scroll-hint" style="margin-bottom: 20px;">
+            <div class="scroll-hint" style="margin-bottom: 12px;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; animation: swipe 1.5s ease-in-out infinite;"><path d="M17 3L21 7L17 11"></path><path d="M7 21L3 17L7 13"></path><path d="M21 7H3"></path><path d="M3 17H21"></path></svg>
                 <span>Scroll horizontally to view full table ↔</span>
+            </div>
+
+            <!-- Custom Slider Control for Mobile & Desktop Scroll (Top) -->
+            <div class="table-slider-control" data-target=".table-wrapper" style="margin-bottom: 15px; margin-top: 5px;">
+                <button class="slider-arrow-btn prev-btn" aria-label="Slide Left" title="Slide Left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <div class="slider-range-wrapper">
+                    <input type="range" class="table-scroll-slider" min="0" max="100" value="0">
+                </div>
+                <button class="slider-arrow-btn next-btn" aria-label="Slide Right" title="Slide Right">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
             </div>
 
             <div class="table-wrapper">
@@ -1850,8 +1863,8 @@
                 </table>
             </div>
 
-            <!-- Custom Slider Control for Mobile & Desktop Scroll -->
-            <div class="table-slider-control" id="slider-competitors">
+            <!-- Custom Slider Control for Mobile & Desktop Scroll (Bottom) -->
+            <div class="table-slider-control" data-target=".table-wrapper" style="margin-top: 15px; margin-bottom: 10px;">
                 <button class="slider-arrow-btn prev-btn" aria-label="Slide Left" title="Slide Left">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 </button>
@@ -2004,9 +2017,22 @@
                 </div>
 
                 <!-- Scroll Hint for Mobile -->
-                <div class="scroll-hint" style="margin-bottom: 15px; color: var(--gold); border-color: rgba(212, 175, 55, 0.35); background: rgba(212, 175, 55, 0.12);">
+                <div class="scroll-hint" style="margin-bottom: 12px; color: var(--gold); border-color: rgba(212, 175, 55, 0.35); background: rgba(212, 175, 55, 0.12);">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; animation: swipe 1.5s ease-in-out infinite;"><path d="M17 3L21 7L17 11"></path><path d="M7 21L3 17L7 13"></path><path d="M21 7H3"></path><path d="M3 17H21"></path></svg>
                     <span>Scroll horizontally ↔</span>
+                </div>
+
+                <!-- Custom Slider Control for Mobile & Desktop Scroll (Top) -->
+                <div class="table-slider-control loan-table-wrapper-control" data-target=".loan-table-wrapper" style="margin-bottom: 15px; margin-top: 5px;">
+                    <button class="slider-arrow-btn prev-btn" aria-label="Slide Left" title="Slide Left">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <div class="slider-range-wrapper">
+                        <input type="range" class="table-scroll-slider" min="0" max="100" value="0">
+                    </div>
+                    <button class="slider-arrow-btn next-btn" aria-label="Slide Right" title="Slide Right">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 </div>
 
                 <div class="loan-table-wrapper">
@@ -2053,18 +2079,18 @@
                     </table>
                 </div>
 
-                <!-- Custom Slider Control for Mobile & Desktop Scroll -->
-                <div class="table-slider-control loan-table-wrapper-control" id="slider-loan">
+                <!-- Custom Slider Control for Mobile & Desktop Scroll (Bottom) -->
+                <div class="table-slider-control loan-table-wrapper-control" data-target=".loan-table-wrapper" style="margin-top: 15px; margin-bottom: 10px;">
                     <button class="slider-arrow-btn prev-btn" aria-label="Slide Left" title="Slide Left">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                </button>
-                <div class="slider-range-wrapper">
-                    <input type="range" class="table-scroll-slider" min="0" max="100" value="0">
+                    </button>
+                    <div class="slider-range-wrapper">
+                        <input type="range" class="table-scroll-slider" min="0" max="100" value="0">
+                    </div>
+                    <button class="slider-arrow-btn next-btn" aria-label="Slide Right" title="Slide Right">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 </div>
-                <button class="slider-arrow-btn next-btn" aria-label="Slide Right" title="Slide Right">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </button>
-            </div>
         </div>
     </div>
 </section>
@@ -2359,17 +2385,15 @@
 
         // Initialize custom high-contrast table sliders and drag scroll behaviors
         function initTableSliders() {
-            const tables = [
-                { wrapper: document.querySelector('.table-wrapper'), sliderId: 'slider-competitors' },
-                { wrapper: document.querySelector('.loan-table-wrapper'), sliderId: 'slider-loan' }
-            ];
+            const controls = document.querySelectorAll('.table-slider-control');
+            const wrappers = new Set();
 
-            tables.forEach(table => {
-                const wrapper = table.wrapper;
+            controls.forEach(control => {
+                const targetSelector = control.getAttribute('data-target');
+                if (!targetSelector) return;
+                const wrapper = document.querySelector(targetSelector);
                 if (!wrapper) return;
-
-                const control = document.getElementById(table.sliderId);
-                if (!control) return;
+                wrappers.add(wrapper);
 
                 const rangeInput = control.querySelector('.table-scroll-slider');
                 const prevBtn = control.querySelector('.prev-btn');
@@ -2398,14 +2422,18 @@
                 updateSliderRange();
                 window.addEventListener('resize', updateSliderRange);
 
-                // Update range slider thumb as user touch-swipes/scrolls
-                wrapper.addEventListener('scroll', () => {
-                    rangeInput.value = wrapper.scrollLeft;
-                });
-
                 // Scroll the table layout when user drags range thumb
                 rangeInput.addEventListener('input', (e) => {
-                    wrapper.scrollLeft = parseInt(e.target.value);
+                    const val = parseInt(e.target.value);
+                    wrapper.scrollLeft = val;
+                    
+                    // Sync other sliders of the same target
+                    document.querySelectorAll(`.table-slider-control[data-target="${targetSelector}"]`).forEach(otherControl => {
+                        if (otherControl !== control) {
+                            const otherInput = otherControl.querySelector('.table-scroll-slider');
+                            if (otherInput) otherInput.value = val;
+                        }
+                    });
                 });
 
                 // Wire up left/right incremental slide buttons
@@ -2419,6 +2447,17 @@
                         wrapper.scrollBy({ left: 200, behavior: 'smooth' });
                     });
                 }
+            });
+
+            // Update all range slider thumbs as user touch-swipes/scrolls the table wrapper
+            wrappers.forEach(wrapper => {
+                const targetSelector = wrapper.classList.contains('loan-table-wrapper') ? '.loan-table-wrapper' : '.table-wrapper';
+                
+                wrapper.addEventListener('scroll', () => {
+                    document.querySelectorAll(`.table-slider-control[data-target="${targetSelector}"] .table-scroll-slider`).forEach(input => {
+                        input.value = wrapper.scrollLeft;
+                    });
+                });
 
                 // Smooth Drag-to-Scroll (Mouse click and drag sliding)
                 let isDown = false;
