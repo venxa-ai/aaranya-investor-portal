@@ -364,6 +364,51 @@
             animation: fadeInUp 1s ease 0.6s both;
         }
 
+        .hero-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-logo-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInUp 1.2s ease 0.3s both;
+        }
+
+        .hero-logo-visual img {
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .hero-logo-visual img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.45);
+        }
+
+        @media (max-width: 991px) {
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-btns {
+                justify-content: center;
+            }
+            .hero-logo-visual img {
+                width: 260px;
+                height: 260px;
+            }
+        }
+
         /* 3. COMPANY OVERVIEW & CORE VALUES */
         .overview {
             padding: 100px 0;
@@ -1356,12 +1401,7 @@
         <div class="container nav-container">
             <a href="#" class="logo-area">
                 <div class="logo-circle">
-                    <!-- High resolution luxury brand marker SVG / fallback -->
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
-                        <circle cx="50" cy="50" r="45" stroke="#D4AF37" stroke-width="2" fill="#092219"/>
-                        <path d="M50 20C40 35 40 65 50 80C60 65 60 35 50 20Z" fill="#D4AF37" opacity="0.8"/>
-                        <circle cx="50" cy="50" r="10" fill="#FFFFFF"/>
-                    </svg>
+                    <img src="aaranya_logo.jpg" alt="Aaranya Logo">
                 </div>
                 <div class="logo-text">
                     <span class="logo-title">AARANYA™</span>
@@ -1392,7 +1432,7 @@
 
     <!-- 2. HERO SECTION -->
     <section class="hero">
-        <div class="container">
+        <div class="container hero-wrapper">
             <div class="hero-content">
                 <div class="hero-badge">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px;">
@@ -1408,6 +1448,9 @@
                     <a href="#loan" class="btn btn-gold">Review Loan Utilization</a>
                     <a href="#overview" class="btn btn-outline">Explore Strategy</a>
                 </div>
+            </div>
+            <div class="hero-logo-visual">
+                <img src="aaranya_logo.jpg" alt="Aaranya Brand Logo">
             </div>
         </div>
     </section>
@@ -1932,7 +1975,10 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h4 style="font-family: var(--font-serif); font-size: 24px; color: var(--gold-light); letter-spacing: 0.1em;">AARANYA™</h4>
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <img src="aaranya_logo.jpg" alt="Aaranya Logo" style="width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid var(--gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);">
+                        <h4 style="font-family: var(--font-serif); font-size: 24px; color: var(--gold-light); letter-spacing: 0.1em; margin: 0;">AARANYA™</h4>
+                    </div>
                     <p>Establishing India's most advanced, high-trust premium botanical scalp and hair health ecosystem through clinical Ayurveda and computer vision diagnostics.</p>
                 </div>
                 <div class="footer-col">
