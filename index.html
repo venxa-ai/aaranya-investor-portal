@@ -389,27 +389,101 @@
             width: 100%;
         }
 
-        .hero-logo-visual {
+        .hero-visual-showcase {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             animation: fadeInUp 1.2s ease 0.3s both;
-            width: 177px;
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
         }
 
-        .hero-logo-visual img {
-            width: 311px;
-            height: 311px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+        .hero-product-card {
+            position: relative;
+            background: rgba(9, 34, 25, 0.45);
+            border: 1.5px solid rgba(212, 175, 55, 0.4);
+            border-radius: 20px;
+            padding: 14px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.15);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .hero-product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(212, 175, 55, 0.25);
+        }
+
+        .hero-product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            border-radius: 12px;
             object-fit: cover;
-            transition: var(--transition);
+            display: block;
         }
 
-        .hero-logo-visual img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.45);
+        .hero-logo-badge {
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            border: 2.5px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
+            background: var(--forest);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 15;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-logo-badge:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.45);
+        }
+
+        .hero-logo-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-floating-tag {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: rgba(9, 34, 25, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 5px 11px;
+            border-radius: 20px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 12;
+            animation: pulse-gold 2s infinite alternate;
+        }
+
+        @keyframes pulse-gold {
+            0% {
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 rgba(212, 175, 55, 0);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 8px rgba(212, 175, 55, 0.4);
+            }
         }
 
         @media (max-width: 991px) {
@@ -421,9 +495,24 @@
             .hero-btns {
                 justify-content: center;
             }
-            .hero-logo-visual img {
-                width: 260px;
-                height: 260px;
+            .hero-visual-showcase {
+                max-width: 330px !important;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-logo-badge {
+                width: 80px;
+                height: 80px;
+                bottom: -10px;
+                left: -10px;
+            }
+            .hero-floating-tag {
+                top: 20px;
+                right: 20px;
+                font-size: 9px;
+                padding: 4px 9px;
             }
         }
 
@@ -1590,8 +1679,8 @@
             .scroll-hint {
                 display: inline-flex !important;
             }
-            /* Reset hero logo visual container restricted width on mobile */
-            .hero-logo-visual {
+            /* Reset hero visual container restricted width on mobile */
+            .hero-visual-showcase {
                 width: 100% !important;
             }
         }
@@ -1698,8 +1787,14 @@
                     <a href="#overview" class="btn btn-outline">Explore Strategy</a>
                 </div>
             </div>
-            <div class="hero-logo-visual">
-                <img src="aaranya_logo.jpg" alt="Aaranya Brand Logo" referrerPolicy="no-referrer">
+            <div class="hero-visual-showcase">
+                <div class="hero-product-card">
+                    <span class="hero-floating-tag">Flagship Product</span>
+                    <img src="aaranya_hair_oil.jpg" alt="Aaranya Rosemary & Bhringraj Hair Oil bottle" referrerPolicy="no-referrer">
+                </div>
+                <div class="hero-logo-badge" title="Aaranya Brand Logo">
+                    <img src="aaranya_logo.jpg" alt="Aaranya Brand Logo" referrerPolicy="no-referrer">
+                </div>
             </div>
         </div>
     </section>
