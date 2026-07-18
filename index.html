@@ -2951,6 +2951,69 @@
                 font-size: 38px;
             }
         }
+
+        /* UNIFIED LUXURY CARDS SMOOTHNESS OVERRIDE (PREVENTS JITTER, SHIVERING, DANCING ON HOVER & CLICK) */
+        .usp-card,
+        .why-card,
+        .metric-card,
+        .future-card,
+        .vm-card,
+        .dl-card,
+        .founder-card,
+        .why-luxury-card,
+        .luxury-list-tile,
+        .hero-product-card,
+        .how-works-step,
+        .income-example-card,
+        .women-love-item,
+        .ba-card,
+        .stat-card,
+        .review-card,
+        .video-card,
+        .trust-card,
+        .social-card,
+        .premium-glass-card {
+            /* Force GPU hardware acceleration & subpixel layout stabilization */
+            will-change: transform, box-shadow, border-color;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            
+            /* Clean up transition properties to target only explicit non-layout variables */
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        /* Solid active state compression response - stabilizes layout and prevents rapid scale toggle jitter */
+        .usp-card:active,
+        .why-card:active,
+        .metric-card:active,
+        .future-card:active,
+        .vm-card:active,
+        .dl-card:active,
+        .founder-card:active,
+        .why-luxury-card:active,
+        .luxury-list-tile:active,
+        .hero-product-card:active,
+        .how-works-step:active,
+        .income-example-card:active,
+        .women-love-item:active,
+        .ba-card:active,
+        .stat-card:active,
+        .review-card:active,
+        .video-card:active,
+        .trust-card:active,
+        .social-card:active,
+        .premium-glass-card:active {
+            transform: scale(0.98) !important;
+            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
+        }
     </style>
 </head>
 <body>
