@@ -3236,106 +3236,604 @@
         </section>
 
         <!-- FREE AI HAIR SCANNER SECTION -->
-        <section id="scanner-section" class="ai-scanner-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">04 / Computer Vision</span>
-                    <h2 class="section-title">Free <span>AI Hair Analysis</span></h2>
-                    <p class="section-desc">Harness our high-trust computer vision engine. Upload your scalp/hair photo and receive a personalized wellness health report in seconds.</p>
+        <section id="scanner-section" class="premium-scanner-wrapper py-24 px-4 bg-[#05140F]" style="background: radial-gradient(circle at top, #0A2F22 0%, #05140F 100%); min-height: 100vh; position: relative;">
+            <!-- Custom CSS Scoped to premium scanner -->
+            <style>
+                .premium-scanner-wrapper {
+                    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+                    color: #F8F7F3;
+                }
+                .premium-glow-text {
+                    background: linear-gradient(135deg, #F4E6C1 0%, #D4AF37 50%, #AA8226 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    text-shadow: 0 0 35px rgba(212, 175, 55, 0.25);
+                }
+                .premium-glass-card {
+                    background: rgba(11, 47, 36, 0.35);
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
+                    border: 1px solid rgba(212, 175, 55, 0.15);
+                    border-radius: 28px;
+                    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+                    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                .premium-glass-card:hover {
+                    border-color: rgba(212, 175, 55, 0.3);
+                    box-shadow: 0 35px 80px rgba(212, 175, 55, 0.08);
+                }
+                .premium-upload-area {
+                    border: 2px dashed rgba(212, 175, 55, 0.25);
+                    background: rgba(11, 47, 36, 0.2);
+                    border-radius: 20px;
+                    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                    position: relative;
+                    overflow: hidden;
+                    cursor: pointer;
+                    aspect-ratio: 4/3;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .premium-upload-area.dragging {
+                    border-color: #D4AF37;
+                    background: rgba(212, 175, 55, 0.1);
+                    transform: scale(1.02);
+                }
+                .premium-laser-line {
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+                    height: 4px;
+                    background: linear-gradient(90deg, transparent, #D4AF37, #FFF, #D4AF37, transparent);
+                    box-shadow: 0 0 20px #D4AF37, 0 0 40px #D4AF37;
+                    z-index: 20;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+                .premium-laser-anim {
+                    animation: premiumScan 3s infinite ease-in-out;
+                    opacity: 1;
+                }
+                @keyframes premiumScan {
+                    0% { top: 0%; }
+                    50% { top: 100%; }
+                    100% { top: 0%; }
+                }
+                .premium-grid-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: 
+                        linear-gradient(rgba(212,175,55,0.06) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(212,175,55,0.06) 1px, transparent 1px);
+                    background-size: 25px 25px;
+                    opacity: 0;
+                    pointer-events: none;
+                    z-index: 10;
+                    transition: opacity 0.5s ease;
+                }
+                .premium-grid-overlay.active {
+                    opacity: 1;
+                }
+                .premium-tracker-box {
+                    position: absolute;
+                    border: 1.5px solid #D4AF37;
+                    background: rgba(212, 175, 55, 0.05);
+                    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+                    border-radius: 4px;
+                    pointer-events: none;
+                    z-index: 15;
+                    opacity: 0;
+                    transition: opacity 0.4s ease;
+                }
+                .premium-tracker-box::before {
+                    content: 'DETECTION POINT';
+                    position: absolute;
+                    top: -18px;
+                    left: 0;
+                    font-size: 8px;
+                    font-family: 'Space Grotesk', sans-serif;
+                    font-weight: 600;
+                    color: #D4AF37;
+                    letter-spacing: 0.1em;
+                    white-space: nowrap;
+                }
+                .premium-tracker-box.active {
+                    opacity: 1;
+                    animation: trackerPulse 2s infinite alternate ease-in-out;
+                }
+                @keyframes trackerPulse {
+                    0% { transform: scale(1); border-color: rgba(212, 175, 55, 0.6); }
+                    100% { transform: scale(1.05); border-color: #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+                }
+                .btn-premium {
+                    background: linear-gradient(135deg, #AA8226 0%, #D4AF37 50%, #F4E6C1 100%);
+                    color: #05140F;
+                    font-family: 'Space Grotesk', sans-serif;
+                    font-weight: 700;
+                    letter-spacing: 0.12em;
+                    text-transform: uppercase;
+                    border-radius: 14px;
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+                    border: none;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .btn-premium:hover:not(:disabled) {
+                    transform: translateY(-2px);
+                    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.35);
+                    filter: brightness(1.05);
+                }
+                .btn-premium:disabled {
+                    background: rgba(255, 255, 255, 0.1) !important;
+                    color: rgba(255, 255, 255, 0.3) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    box-shadow: none;
+                    cursor: not-allowed;
+                }
+                /* Circular Progress Meter */
+                .circular-progress-wrap {
+                    position: relative;
+                    width: 130px;
+                    height: 130px;
+                    margin: 0 auto;
+                }
+                .circular-progress-bg {
+                    fill: none;
+                    stroke: rgba(212, 175, 55, 0.08);
+                    stroke-width: 8;
+                }
+                .circular-progress-fill {
+                    fill: none;
+                    stroke: url(#goldGradient);
+                    stroke-width: 8;
+                    stroke-linecap: round;
+                    stroke-dasharray: 377;
+                    stroke-dashoffset: 377;
+                    transform: rotate(-90deg);
+                    transform-origin: center;
+                    transition: stroke-dashoffset 2s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                /* Custom progress indicator checkmark animation */
+                .premium-status-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    opacity: 0.4;
+                    transition: all 0.4s ease;
+                }
+                .premium-status-item.active {
+                    opacity: 1;
+                }
+                .premium-status-item.completed {
+                    opacity: 0.85;
+                    color: #D4AF37;
+                }
+                .premium-status-icon {
+                    width: 22px;
+                    height: 22px;
+                    border-radius: 50%;
+                    border: 1.5px solid rgba(255,255,255,0.2);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 11px;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                }
+                .premium-status-item.active .premium-status-icon {
+                    border-color: #D4AF37;
+                    background: rgba(212, 175, 55, 0.1);
+                    animation: spin 1.5s infinite linear;
+                }
+                .premium-status-item.completed .premium-status-icon {
+                    border-color: #D4AF37;
+                    background: #D4AF37;
+                    color: #05140F;
+                }
+                /* Segmented indicators */
+                .meter-segment {
+                    flex: 1;
+                    height: 6px;
+                    border-radius: 2px;
+                    background: rgba(255, 255, 255, 0.08);
+                    transition: all 0.5s ease;
+                }
+                .meter-segment.active-excellent {
+                    background: linear-gradient(90deg, #D4AF37, #F4E6C1);
+                    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+                }
+                .meter-segment.active-good {
+                    background: #D4AF37;
+                }
+                .meter-segment.active-average {
+                    background: #AA8226;
+                }
+                .meter-segment.active-low {
+                    background: #8C1C13;
+                }
+                /* Responsive Tab controls */
+                .care-tab-btn {
+                    padding: 12px 20px;
+                    font-family: 'Space Grotesk', sans-serif;
+                    font-size: 13px;
+                    letter-spacing: 0.05em;
+                    text-transform: uppercase;
+                    border-bottom: 2px solid transparent;
+                    color: rgba(248, 247, 243, 0.5);
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                    white-space: nowrap;
+                }
+                .care-tab-btn:hover {
+                    color: #F8F7F3;
+                }
+                .care-tab-btn.active {
+                    color: #D4AF37;
+                    border-bottom-color: #D4AF37;
+                    font-weight: 600;
+                }
+                .care-tab-content {
+                    display: none;
+                    animation: fadeIn 0.5s ease both;
+                }
+                .care-tab-content.active {
+                    display: block;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(8px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+
+            <div class="container mx-auto max-w-7xl relative z-10">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span class="inline-block py-1.5 px-4 mb-4 text-[11px] font-semibold tracking-[0.3em] uppercase text-[#D4AF37] bg-opacity-10 bg-[#D4AF37] border border-opacity-20 border-[#D4AF37] rounded-full">
+                        AI Botanical Wellness Lab
+                    </span>
+                    <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-4">
+                        Free <span class="premium-glow-text">AI Hair Scanner</span>
+                    </h2>
+                    <p class="text-lg text-opacity-80 text-[#F8F7F3] font-light max-w-2xl mx-auto leading-relaxed">
+                        Upload your hair photo and receive your personalized AI Hair Wellness Report in seconds.
+                    </p>
+                    <div style="width: 80px; height: 1.5px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); margin: 30px auto 0 auto;"></div>
                 </div>
 
-                <div class="ai-scanner-card">
-                    <div class="scanner-grid">
-                        <!-- Left Side: Scanner Interaction Arena -->
-                        <div>
-                            <div class="scanner-upload-arena" id="upload-box" onclick="triggerFileInput()">
-                                <input type="file" id="hair-file-input" style="display: none;" accept="image/*" onchange="handleFileSelect(event)">
+                <!-- Main Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Left: Upload & Scanning Panel -->
+                    <div class="lg:col-span-5 flex flex-col gap-6">
+                        <div class="premium-glass-card p-6 md:p-8 flex flex-col gap-6">
+                            <h3 class="font-serif text-2xl text-[#F4E6C1] flex items-center gap-2 border-b border-white border-opacity-10 pb-4">
+                                <span>✦</span> Image Analysis Arena
+                            </h3>
+
+                            <!-- Upload Box -->
+                            <div id="premium-drop-zone" class="premium-upload-area relative group" onclick="document.getElementById('premium-file-input').click()">
+                                <input type="file" id="premium-file-input" style="display: none;" accept="image/png, image/jpeg, image/webp" onchange="handlePremiumFileSelect(event)">
                                 
-                                <div id="upload-prompt" style="text-align: center;">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--gold); margin-bottom: 16px;">
-                                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                                        <circle cx="12" cy="13" r="4"></circle>
-                                    </svg>
-                                    <h5 style="font-family: var(--font-serif); font-size: 18px; color: var(--forest); margin-bottom: 8px;">Upload Your Hair Photo</h5>
-                                    <p style="font-size: 13px; color: rgba(11,47,36,0.6); max-width: 250px; margin: 0 auto;">Drag and drop or click to select a close-up photo of your crown or scalp area.</p>
+                                <!-- Static Prompt (Visible initially) -->
+                                <div id="premium-upload-prompt" class="text-center p-6 flex flex-col items-center justify-center gap-4 transition duration-300">
+                                    <div class="w-16 h-16 rounded-full bg-opacity-5 bg-white border border-[#D4AF37] border-opacity-25 flex items-center justify-center text-[#D4AF37] group-hover:scale-110 group-hover:border-opacity-60 transition duration-500">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-serif text-xl text-[#F4E6C1] mb-1">Upload Your Hair Photo</h4>
+                                        <p class="text-xs text-opacity-60 text-[#F8F7F3] max-w-xs mx-auto leading-relaxed">
+                                            Drag and drop your image, or click to browse.<br>Supports JPG, PNG, WEBP (Max 10 MB)
+                                        </p>
+                                    </div>
                                 </div>
 
-                                <img id="uploaded-image-preview" class="scanner-preview-img" src="#" alt="Hair sample to analyze">
-                                
-                                <!-- Scan Overlays -->
-                                <div class="scanner-active-overlay" id="scanner-grid"></div>
-                                <div class="scanner-active-line" id="scanner-laser"></div>
+                                <!-- Live Image Preview (Hidden initially) -->
+                                <img id="premium-image-preview" src="#" alt="Hair sample preview" class="absolute inset-0 w-full h-full object-cover rounded-2xl hidden" style="filter: brightness(0.95);">
+
+                                <!-- Animated Scanning Overlays -->
+                                <div id="premium-laser" class="premium-laser-line"></div>
+                                <div id="premium-grid" class="premium-grid-overlay"></div>
+                                <div id="premium-scan-box-1" class="premium-tracker-box w-20 h-20 top-[20%] left-[15%] active" style="display: none;"></div>
+                                <div id="premium-scan-box-2" class="premium-tracker-box w-16 h-16 bottom-[25%] right-[20%] active" style="display: none; animation-delay: -0.8s;"></div>
                             </div>
 
-                            <div style="margin-top: 24px; display: flex; gap: 15px;">
-                                <button onclick="triggerFileInput()" class="btn btn-outline" style="flex: 1; justify-content: center; border-color: var(--gold); color: var(--forest);">Upload Photo</button>
-                                <button id="btn-run-analysis" onclick="runHairAnalysis()" class="btn btn-gold" style="flex: 1.2; justify-content: center;" disabled>Analyze My Hair</button>
+                            <!-- Buttons Wrapper -->
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button type="button" onclick="resetPremiumScanner()" class="flex-1 py-4 border border-white border-opacity-10 hover:border-opacity-30 rounded-xl font-mono text-xs tracking-wider uppercase text-opacity-80 text-[#F8F7F3] transition duration-300" style="background: rgba(255,255,255,0.02); cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                    🔄 Clear Photo
+                                </button>
+                                <button type="button" id="premium-analyze-btn" onclick="triggerPremiumAnalysis()" class="flex-1 btn-premium py-4 font-bold text-xs" disabled>
+                                    🧬 Analyze My Hair
+                                </button>
+                            </div>
+
+                            <!-- Scanning Progress Checkpoints -->
+                            <div id="premium-scanning-status" class="flex flex-col gap-4 border-t border-white border-opacity-5 pt-6" style="display: none;">
+                                <div class="flex items-center justify-between font-mono text-[10px] tracking-wider text-opacity-60 text-[#F8F7F3] uppercase mb-1">
+                                    <span>AI System Status</span>
+                                    <span id="premium-progress-pct" class="text-[#D4AF37]">0%</span>
+                                </div>
+                                <div class="w-full h-[3px] bg-white bg-opacity-5 rounded-full overflow-hidden mb-2">
+                                    <div id="premium-progress-bar" class="h-full bg-gradient-to-r from-[#AA8226] to-[#D4AF37] w-0 transition-all duration-300 ease-out"></div>
+                                </div>
+
+                                <div class="flex flex-col gap-3">
+                                    <div id="status-step-1" class="premium-status-item">
+                                        <span class="premium-status-icon">1</span>
+                                        <span class="font-sans text-xs font-light">Scanning Hair...</span>
+                                    </div>
+                                    <div id="status-step-2" class="premium-status-item">
+                                        <span class="premium-status-icon">2</span>
+                                        <span class="font-sans text-xs font-light">Detecting Hair Density...</span>
+                                    </div>
+                                    <div id="status-step-3" class="premium-status-item">
+                                        <span class="premium-status-icon">3</span>
+                                        <span class="font-sans text-xs font-light">Checking Hair Health...</span>
+                                    </div>
+                                    <div id="status-step-4" class="premium-status-item">
+                                        <span class="premium-status-icon">4</span>
+                                        <span class="font-sans text-xs font-light">Generating Personalized Report...</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Right Side: Diagnostics Report Output -->
-                        <div>
-                            <!-- Default Box -->
-                            <div id="report-empty-state" style="text-align: center; border: 1px solid rgba(11,47,36,0.08); padding: 50px 30px; border-radius: 12px; background: #FAF9F6;">
-                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: rgba(11,47,36,0.4); margin-bottom: 16px;">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
+                        <!-- Mini Educational Tip -->
+                        <div class="premium-glass-card p-6 flex gap-4 items-start" style="background: rgba(11, 47, 36, 0.2);">
+                            <div class="text-[#D4AF37] text-xl">💡</div>
+                            <div class="text-xs text-opacity-70 text-[#F8F7F3] leading-relaxed">
+                                <strong class="text-[#F4E6C1] block mb-1">For Best Scanning Results:</strong>
+                                Ensure your photo is well-lit, sharp, and focused directly on your crown area, hair parting, or temple. Try to capture clean hair without heavy styling products.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Reports & Dashboards -->
+                    <div class="lg:col-span-7" id="premium-report-panel">
+                        <!-- Empty State -->
+                        <div id="premium-report-empty" class="premium-glass-card p-12 text-center flex flex-col items-center justify-center gap-6 min-h-[500px]">
+                            <div class="w-20 h-20 rounded-full bg-opacity-5 bg-[#D4AF37] border border-[#D4AF37] border-opacity-10 flex items-center justify-center text-[#D4AF37] mb-2 animate-pulse">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                                 </svg>
-                                <h4 class="brand-font" style="font-size: 20px; color: var(--forest); margin-bottom: 8px;">No Report Generated Yet</h4>
-                                <p style="font-size: 14px; color: rgba(11,47,36,0.6); max-width: 280px; margin: 0 auto;">Please upload a high-resolution hair or scalp photo and click "Analyze My Hair" to trigger the digital diagnostics simulation.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-2xl text-[#F4E6C1] mb-2">No Wellness Report Generated</h4>
+                                <p class="text-sm text-opacity-60 text-[#F8F7F3] max-w-sm mx-auto leading-relaxed">
+                                    Your detailed bio-metric assessment will appear here. Please select a photo and click the "Analyze My Hair" button on the left to initiate the high-precision scanning suite.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Real Report Dashboard (Hidden initially) -->
+                        <div id="premium-report-card" class="premium-glass-card p-6 md:p-8 flex flex-col gap-8 hidden" style="background: rgba(5, 20, 15, 0.75);">
+                            <!-- Header Info -->
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white border-opacity-10 pb-6 gap-4">
+                                <div>
+                                    <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-[#D4AF37] block mb-1">AARANYA™ Diagnostics Suite v2.0</span>
+                                    <h3 class="font-serif text-2xl text-[#F4E6C1]">AI Hair Wellness Report</h3>
+                                </div>
+                                <div class="font-mono text-[10px] text-opacity-55 text-[#F8F7F3] bg-white bg-opacity-5 py-2 px-4 rounded-lg border border-white border-opacity-5 flex flex-col gap-1">
+                                    <span>ID: <strong id="rep-serial" class="text-[#D4AF37]">AAR-SCAN-98321</strong></span>
+                                    <span>DATE: <strong id="rep-date">2026-07-17</strong></span>
+                                </div>
                             </div>
 
-                            <!-- Scanning Progress State -->
-                            <div id="report-scanning-state" style="display: none; text-align: center; padding: 50px 30px;">
-                                <div style="display: inline-block; width: 40px; height: 40px; border: 3px solid rgba(212,175,55,0.2); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s infinite linear; margin-bottom: 20px;"></div>
-                                <h4 class="brand-font" id="scanning-progress-text" style="font-size: 20px; color: var(--forest); margin-bottom: 10px;">Initializing scan...</h4>
-                                <p style="font-size: 14px; color: rgba(11,47,36,0.6);">AI diagnostics computer vision model is running live pixel-level hair mapping.</p>
+                            <!-- Score & Primary Metrics Bento -->
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                                <!-- circular progress score -->
+                                <div class="md:col-span-5 text-center p-6 rounded-2xl bg-white bg-opacity-5 border border-white border-opacity-5">
+                                    <div class="circular-progress-wrap mb-4">
+                                        <svg width="130" height="130">
+                                            <defs>
+                                                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                    <stop offset="0%" stop-color="#AA8226" />
+                                                    <stop offset="50%" stop-color="#D4AF37" />
+                                                    <stop offset="100%" stop-color="#F4E6C1" />
+                                                </linearGradient>
+                                            </defs>
+                                            <circle class="circular-progress-bg" cx="65" cy="65" r="60"/>
+                                            <circle id="score-circle-fill" class="circular-progress-fill" cx="65" cy="65" r="60"/>
+                                        </svg>
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                            <span id="score-value-text" class="font-serif text-3xl font-bold text-[#F4E6C1]">0</span>
+                                            <span class="text-[9px] font-mono tracking-widest text-opacity-50 text-[#F8F7F3] uppercase">SCORE</span>
+                                        </div>
+                                    </div>
+                                    <h4 class="font-serif text-lg text-[#F4E6C1] mb-1" id="score-health-label">Analyzing...</h4>
+                                    <p class="text-[10px] font-mono text-[#D4AF37] tracking-wider uppercase" id="score-status-badge">Wellness Tier</p>
+                                </div>
+
+                                <!-- Primary Metrics Indicators -->
+                                <div class="md:col-span-7 flex flex-col gap-5 p-2">
+                                    <!-- Hair Density -->
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-xs font-mono tracking-wider text-opacity-70 text-[#F8F7F3] uppercase">Hair Density</span>
+                                            <span class="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider" id="metric-density-val">Excellent</span>
+                                        </div>
+                                        <div class="flex gap-1.5" id="metric-density-bar">
+                                            <div class="meter-segment"></div>
+                                            <div class="meter-segment"></div>
+                                            <div class="meter-segment"></div>
+                                            <div class="meter-segment"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Hair Thickness -->
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-xs font-mono tracking-wider text-opacity-70 text-[#F8F7F3] uppercase">Hair Thickness</span>
+                                            <span class="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider" id="metric-thickness-val">Medium</span>
+                                        </div>
+                                        <div class="flex gap-1.5" id="metric-thickness-bar">
+                                            <div class="meter-segment"></div>
+                                            <div class="meter-segment"></div>
+                                            <div class="meter-segment"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Hair Shine -->
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-xs font-mono tracking-wider text-opacity-70 text-[#F8F7F3] uppercase">Hair Shine</span>
+                                            <span class="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider" id="metric-shine-val">Good</span>
+                                        </div>
+                                        <div class="flex gap-1.5" id="metric-shine-bar">
+                                            <div class="meter-segment"></div>
+                                            <div class="meter-segment"></div>
+                                            <div class="meter-segment"></div>
+                                            <div class="meter-segment"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <!-- Finished Report State -->
-                            <div class="scanner-report-box" id="report-finished-state">
-                                <div class="report-header-gold">
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em;">AARANYA™ Diagnostics Suite v1.4</span>
-                                    <h4>Hair Analysis Report</h4>
-                                    <span class="report-status-badge">Overall Score: 84 / 100</span>
-                                </div>
-
-                                <div class="report-metrics">
-                                    <div class="report-metric-bar">
-                                        <div class="report-bar-label">
-                                            <span>Hair Density Score</span>
-                                            <span style="color: var(--gold-light);">88% (Excellent)</span>
-                                        </div>
-                                        <div class="report-bar-outer">
-                                            <div class="report-bar-inner" id="bar-density"></div>
-                                        </div>
+                            <!-- Dynamic Parameters Details Bento (Secondary Characteristics) -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-b border-white border-opacity-10 py-6 my-2">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex justify-between border-b border-white border-opacity-5 pb-2.5 text-sm">
+                                        <span class="text-opacity-60 text-[#F8F7F3] font-light">👤 Scalp Appearance</span>
+                                        <strong class="text-[#F4E6C1]" id="char-scalp">Looks Healthy</strong>
                                     </div>
-
-                                    <div class="report-metric-bar">
-                                        <div class="report-bar-label">
-                                            <span>Scalp Hydration rating</span>
-                                            <span style="color: var(--gold-light);">62% (Dry - Needs Actives)</span>
-                                        </div>
-                                        <div class="report-bar-outer">
-                                            <div class="report-bar-inner" id="bar-hydration"></div>
-                                        </div>
+                                    <div class="flex justify-between border-b border-white border-opacity-5 pb-2.5 text-sm">
+                                        <span class="text-opacity-60 text-[#F8F7F3] font-light">📉 Visible Hair Fall Signs</span>
+                                        <strong class="text-[#F4E6C1]" id="char-fall">Minimal</strong>
                                     </div>
-
-                                    <div class="report-metric-bar">
-                                        <div class="report-bar-label">
-                                            <span>Follicle Tensile Strength</span>
-                                            <span style="color: var(--gold-light);">79% (Optimal Baseline)</span>
-                                        </div>
-                                        <div class="report-bar-outer">
-                                            <div class="report-bar-inner" id="bar-follicle"></div>
-                                        </div>
+                                    <div class="flex justify-between border-b border-white border-opacity-5 pb-2.5 text-sm">
+                                        <span class="text-opacity-60 text-[#F8F7F3] font-light">🧬 Hair Texture</span>
+                                        <strong class="text-[#F4E6C1]" id="char-texture">Straight</strong>
                                     </div>
                                 </div>
-
-                                <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.5;">
-                                    <p style="margin-bottom: 10px;"><strong style="color: var(--gold);">Clinical Diagnosis:</strong> Your scalp exhibits localized epidermal dryness, which leads to early follicle starvation cycles. Bioactive nourishment is highly recommended.</p>
-                                    <p><strong style="color: var(--gold);">Recommendation:</strong> Standard 90-day cycle of <strong>AARANYA™ Premium Botanical Hair Oil</strong>. Apply 3-4 drops directly to dry scalp roots nightly.</p>
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex justify-between border-b border-white border-opacity-5 pb-2.5 text-sm">
+                                        <span class="text-opacity-60 text-[#F8F7F3] font-light">✂️ Split Ends Visibility</span>
+                                        <strong class="text-[#F4E6C1]" id="char-split">Low</strong>
+                                    </div>
+                                    <div class="flex justify-between border-b border-white border-opacity-5 pb-2.5 text-sm">
+                                        <span class="text-opacity-60 text-[#F8F7F3] font-light">🍂 Dryness Level</span>
+                                        <strong class="text-[#F4E6C1]" id="char-dryness">Low</strong>
+                                    </div>
+                                    <div class="flex justify-between border-b border-white border-opacity-5 pb-2.5 text-sm">
+                                        <span class="text-opacity-60 text-[#F8F7F3] font-light">⚡ Frizz Level</span>
+                                        <strong class="text-[#F4E6C1]" id="char-frizz">Low</strong>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <!-- AI Wellness Summary (With strict user phrase requests) -->
+                            <div class="rounded-2xl p-6 relative overflow-hidden border border-[#D4AF37] border-opacity-20" style="background: linear-gradient(135deg, rgba(18,60,45,0.4) 0%, rgba(11,47,36,0.1) 100%);">
+                                <div style="position: absolute; top: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); pointer-events: none;"></div>
+                                <h4 class="font-serif text-lg text-[#F4E6C1] mb-3 flex items-center gap-2">
+                                    <span>✧</span> AI Hair Wellness Summary
+                                </h4>
+                                <p class="text-sm font-light text-opacity-95 text-[#F8F7F3] leading-relaxed" id="summary-text">
+                                    Based on the visible appearance of the uploaded sample, it appears that your hair fibers maintain optimal cuticular alignment. The image suggests some localized moisture variations.
+                                </p>
+                            </div>
+
+                            <!-- Care Plan Tabs -->
+                            <div>
+                                <h4 class="font-serif text-lg text-[#F4E6C1] mb-4">Your Personalized Care Plan</h4>
+                                
+                                <!-- Tabs Headers -->
+                                <div class="flex overflow-x-auto border-b border-white border-opacity-10 pb-0 gap-2 scrollbar-none mb-4">
+                                    <div class="care-tab-btn active" onclick="switchCareTab('morning', event)">🌅 Morning Hair Routine</div>
+                                    <div class="care-tab-btn" onclick="switchCareTab('evening', event)">🌃 Evening Hair Routine</div>
+                                    <div class="care-tab-btn" onclick="switchCareTab('oil', event)">🌿 Weekly Oil Routine</div>
+                                    <div class="care-tab-btn" onclick="switchCareTab('wash', event)">🧼 Weekly Hair Wash</div>
+                                    <div class="care-tab-btn" onclick="switchCareTab('massage', event)">💆 Scalp Massage</div>
+                                    <div class="care-tab-btn" onclick="switchCareTab('lifestyle', event)">🥑 Lifestyle Tips</div>
+                                </div>
+
+                                <!-- Tabs Content -->
+                                <div id="care-tab-content-morning" class="care-tab-content active text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>Avoid aggressive detangling when waking up; use a seamless neem wood wide-tooth comb.</li>
+                                        <li>Apply a light hydration mist or botanical water base to stimulate cuticular swelling safely.</li>
+                                        <li>Protect hair fibers from UV oxidation by wearing a lightweight hat or protective silk scarf if spending extended hours outdoors.</li>
+                                    </ul>
+                                </div>
+                                <div id="care-tab-content-evening" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>Apply 2-3 drops of <strong class="text-[#D4AF37]">AARANYA™ Hair Oil</strong> exclusively onto dry, frayed ends to lock in overnight hydration and prevent splitting.</li>
+                                        <li>Perform a gentle 3-minute fingertip cranial manipulation without oil to relax the aponeurosis muscle.</li>
+                                        <li>Replace cotton pillowcases with premium silk or satin cases to eliminate high frictional dragging coefficients during sleep.</li>
+                                    </ul>
+                                </div>
+                                <div id="care-tab-content-oil" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>Warm up 1-1.5 tablespoons of <strong class="text-[#D4AF37]">AARANYA™ Premium Botanical Hair Oil</strong>. Warmth expands follicular absorption channels.</li>
+                                        <li>Section your hair and apply the warm oil systematically directly onto your scalp, massaging gently in circular motions.</li>
+                                        <li>Leave the oil on for a minimum of 45 minutes, or overnight in a loose wrap, before cleansing. Recommended frequency: 2-3 times per week.</li>
+                                    </ul>
+                                </div>
+                                <div id="care-tab-content-wash" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>Restrict shampoo washings to 2 or 3 times a week max. Over-cleansing strips protective natural sebum.</li>
+                                        <li>Ensure your shampoo is completely sulfate-free, paraben-free, and pH-balanced to avoid follicle corrosion.</li>
+                                        <li>Always wash with lukewarm water and finish with a cold water rinse to snap the cuticular shingles shut, locking in shine.</li>
+                                    </ul>
+                                </div>
+                                <div id="care-tab-content-massage" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>Use the 4-minute inversion massage method: bend slightly forward to increase blood flow to follicles.</li>
+                                        <li>Employ firm, deep circular touchpoints using the pads of your fingers (never nails) starting from occipital lines moving up to the crown.</li>
+                                        <li>Combine massage with a wooden comb routine to evenly distribute natural scalp oils down the hair shaft.</li>
+                                    </ul>
+                                </div>
+                                <div id="care-tab-content-lifestyle" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        <li>Prioritize dietary protein intake, specifically rich in sulfur-containing amino acids (lentils, pumpkin seeds, walnuts).</li>
+                                        <li>Maintain a daily hydration target of at least 2.5 to 3 liters of pure water to hydrate follicle matrices from within.</li>
+                                        <li>Incorporate stress-mitigation protocols like breathing exercises, as elevated cortisol blocks active follicle division phases.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Recommended Product (Luxury Card) -->
+                            <div class="border-t border-white border-opacity-10 pt-8 flex flex-col md:flex-row gap-6 items-center">
+                                <div class="w-full md:w-1/3 flex justify-center">
+                                    <div class="relative group overflow-hidden rounded-2xl border border-[#D4AF37] border-opacity-20 aspect-square max-w-[180px]">
+                                        <img src="aaranya_hair_oil.jpg" alt="AARANYA Premium Hair Oil Bottle" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-30"></div>
+                                    </div>
+                                </div>
+                                <div class="w-full md:w-2/3 flex flex-col gap-3">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <span class="text-[10px] font-mono tracking-widest text-[#D4AF37] uppercase block">Highly Recommended Elixir</span>
+                                            <h5 class="font-serif text-xl text-[#F8F7F3] mt-1">AARANYA™ Premium Botanical Hair Oil</h5>
+                                        </div>
+                                        <div class="flex gap-0.5 text-[#D4AF37] text-xs">★ ★ ★ ★ ★</div>
+                                    </div>
+                                    <p class="text-xs text-opacity-65 text-[#F8F7F3] leading-relaxed font-light">
+                                        A powerful, clinical-grade formulation featuring authentic Ayurvedic extracts designed to target scalp dryness, accelerate cell regeneration, and restore cuticular shine.
+                                    </p>
+                                    <div class="flex items-center justify-between mt-2 gap-4">
+                                        <div>
+                                            <span class="text-[10px] text-opacity-50 text-[#F8F7F3] line-through block font-mono">MRP ₹999</span>
+                                            <span class="text-xl font-bold text-[#D4AF37] font-serif">₹699 <span class="text-xs text-opacity-80 text-[#F8F7F3] font-light">Launch Offer</span></span>
+                                        </div>
+                                        <button onclick="scrollToOrderPageAndPreselect()" class="btn-premium py-2.5 px-6 text-xs font-bold font-mono">
+                                            🛒 Order Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Premium Disclaimer -->
+                            <div class="border-t border-white border-opacity-5 pt-6 text-[10px] text-opacity-40 text-[#F8F7F3] font-light leading-relaxed text-center">
+                                <strong>DISCLAIMER:</strong> This AI Hair Wellness Assessment provides educational information only. It is not a medical diagnosis and should not replace professional medical advice. If you experience severe or persistent hair or scalp concerns, please consult a qualified dermatologist.
                             </div>
                         </div>
                     </div>
@@ -6128,81 +6626,382 @@ Please confirm my order. Thank you!`;
         }
 
         // ===================================================
-        // AI HAIR SCANNER SIMULATION ENGINE
+        // PREMIUM AI HAIR SCANNER SIMULATION ENGINE
         // ===================================================
-        function triggerFileInput() {
-            document.getElementById('hair-file-input').click();
-        }
+        let premiumAnalysisInterval = null;
 
-        function handleFileSelect(event) {
+        function handlePremiumFileSelect(event) {
             const file = event.target.files[0];
             if (!file) return;
 
+            // Check size limit (10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                alert("Maximum allowed file size is 10 MB. Please upload a smaller image.");
+                return;
+            }
+
             const reader = new FileReader();
             reader.onload = function(e) {
-                const imgPreview = document.getElementById('uploaded-image-preview');
-                const uploadPrompt = document.getElementById('upload-prompt');
-                const btnAnalysis = document.getElementById('btn-run-analysis');
+                const imgPreview = document.getElementById('premium-image-preview');
+                const uploadPrompt = document.getElementById('premium-upload-prompt');
+                const btnAnalysis = document.getElementById('premium-analyze-btn');
 
-                imgPreview.src = e.target.result;
-                imgPreview.style.display = 'block';
-                uploadPrompt.style.display = 'none';
-                btnAnalysis.removeAttribute('disabled');
+                if (imgPreview) {
+                    imgPreview.src = e.target.result;
+                    imgPreview.classList.remove('hidden');
+                }
+                if (uploadPrompt) {
+                    uploadPrompt.classList.add('hidden');
+                }
+                if (btnAnalysis) {
+                    btnAnalysis.removeAttribute('disabled');
+                }
+                
+                // Auto scroll slightly to bring buttons into clear view
+                btnAnalysis.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             };
             reader.readAsDataURL(file);
         }
 
-        function runHairAnalysis() {
-            const btnAnalysis = document.getElementById('btn-run-analysis');
-            const emptyState = document.getElementById('report-empty-state');
-            const scanningState = document.getElementById('report-scanning-state');
-            const finishedState = document.getElementById('report-finished-state');
-            const laser = document.getElementById('scanner-laser');
-            const grid = document.getElementById('scanner-grid');
-            const progressText = document.getElementById('scanning-progress-text');
+        function triggerPremiumAnalysis() {
+            const btnAnalysis = document.getElementById('premium-analyze-btn');
+            if (!btnAnalysis || btnAnalysis.hasAttribute('disabled')) return;
 
-            // Disable analysis button
+            // Clear any active interval
+            if (premiumAnalysisInterval) clearInterval(premiumAnalysisInterval);
+
+            // Disable button during analysis
             btnAnalysis.setAttribute('disabled', 'true');
 
-            // Toggle visuals
-            emptyState.style.display = 'none';
-            finishedState.style.display = 'none';
-            scanningState.style.display = 'block';
-            laser.style.display = 'block';
-            grid.style.display = 'block';
+            // Show status wrapper
+            const statusWrapper = document.getElementById('premium-scanning-status');
+            if (statusWrapper) statusWrapper.style.display = 'block';
 
-            // Animated text steps
-            const stages = [
-                "Initializing scanning arrays...",
-                "Running high-precision pixel contrast map...",
-                "Analyzing hair shaft thickness & density...",
-                "Evaluating epidermal sebum & moisture ratings...",
-                "Compiling clinical bio-active diagnostics report..."
-            ];
+            // Activate scanner visuals
+            const laser = document.getElementById('premium-laser');
+            if (laser) laser.classList.add('premium-laser-anim');
+            const grid = document.getElementById('premium-grid');
+            if (grid) grid.classList.add('active');
+            
+            const box1 = document.getElementById('premium-scan-box-1');
+            if (box1) box1.style.display = 'block';
+            const box2 = document.getElementById('premium-scan-box-2');
+            if (box2) box2.style.display = 'block';
 
-            let stageIdx = 0;
-            const textInterval = setInterval(() => {
-                if (stageIdx < stages.length) {
-                    progressText.innerText = stages[stageIdx];
-                    stageIdx++;
+            // Reset steps to initial state
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById('status-step-' + i);
+                if (step) {
+                    step.className = 'premium-status-item';
                 }
-            }, 700);
+            }
 
-            // Turn off scanner lines and show final gold results drawer
+            const progressBar = document.getElementById('premium-progress-bar');
+            const progressPct = document.getElementById('premium-progress-pct');
+
+            let currentPercent = 0;
+            
+            premiumAnalysisInterval = setInterval(() => {
+                currentPercent += 2;
+                if (currentPercent > 100) currentPercent = 100;
+
+                // Update progress visual
+                if (progressBar) progressBar.style.width = currentPercent + '%';
+                if (progressPct) progressPct.innerText = currentPercent + '%';
+
+                // Manage step visual states
+                const step1 = document.getElementById('status-step-1');
+                const step2 = document.getElementById('status-step-2');
+                const step3 = document.getElementById('status-step-3');
+                const step4 = document.getElementById('status-step-4');
+
+                if (currentPercent < 25) {
+                    if (step1 && !step1.classList.contains('active')) {
+                        step1.className = 'premium-status-item active';
+                    }
+                } else if (currentPercent >= 25 && currentPercent < 50) {
+                    if (step1 && !step1.classList.contains('completed')) {
+                        step1.className = 'premium-status-item completed';
+                    }
+                    if (step2 && !step2.classList.contains('active')) {
+                        step2.className = 'premium-status-item active';
+                    }
+                } else if (currentPercent >= 50 && currentPercent < 75) {
+                    if (step2 && !step2.classList.contains('completed')) {
+                        step2.className = 'premium-status-item completed';
+                    }
+                    if (step3 && !step3.classList.contains('active')) {
+                        step3.className = 'premium-status-item active';
+                    }
+                } else if (currentPercent >= 75 && currentPercent < 100) {
+                    if (step3 && !step3.classList.contains('completed')) {
+                        step3.className = 'premium-status-item completed';
+                    }
+                    if (step4 && !step4.classList.contains('active')) {
+                        step4.className = 'premium-status-item active';
+                    }
+                } else if (currentPercent >= 100) {
+                    if (step4 && !step4.classList.contains('completed')) {
+                        step4.className = 'premium-status-item completed';
+                    }
+                    
+                    clearInterval(premiumAnalysisInterval);
+                    
+                    // Short delay to let user register the 100% state
+                    setTimeout(() => {
+                        completePremiumAnalysis();
+                    }, 600);
+                }
+            }, 60); // Total scanning time around 3 seconds
+        }
+
+        function setMetricBar(containerId, value) {
+            const container = document.getElementById(containerId);
+            const label = document.getElementById(containerId.replace('-bar', '-val'));
+            if (!container || !label) return;
+            
+            label.innerText = value;
+            const segments = container.querySelectorAll('.meter-segment');
+            
+            // Clear previous classes
+            segments.forEach(seg => {
+                seg.className = 'meter-segment';
+            });
+            
+            let activeClass = '';
+            let count = 0;
+            
+            if (value === 'Excellent') {
+                activeClass = 'active-excellent';
+                count = 4;
+            } else if (value === 'Good') {
+                activeClass = 'active-good';
+                count = 3;
+            } else if (value === 'Medium' || value === 'Average' || value === 'Normal') {
+                activeClass = 'active-average';
+                count = 2;
+            } else {
+                activeClass = 'active-low';
+                count = 1;
+            }
+            
+            for (let i = 0; i < count; i++) {
+                if (segments[i]) {
+                    segments[i].classList.add(activeClass);
+                }
+            }
+        }
+
+        function completePremiumAnalysis() {
+            // Turn off scanning visuals
+            const laser = document.getElementById('premium-laser');
+            if (laser) laser.classList.remove('premium-laser-anim');
+            const grid = document.getElementById('premium-grid');
+            if (grid) grid.classList.remove('active');
+            
+            const box1 = document.getElementById('premium-scan-box-1');
+            if (box1) box1.style.display = 'none';
+            const box2 = document.getElementById('premium-scan-box-2');
+            if (box2) box2.style.display = 'none';
+
+            // Hide empty report panel state
+            const reportEmpty = document.getElementById('premium-report-empty');
+            if (reportEmpty) reportEmpty.classList.add('hidden');
+            
+            // Show report card state
+            const reportCard = document.getElementById('premium-report-card');
+            if (reportCard) reportCard.classList.remove('hidden');
+
+            // Generate randomized metrics for premium presentation
+            const randomScore = Math.floor(75 + Math.random() * 19); // 75 to 93
+            
+            const densityOptions = ["Excellent", "Good", "Medium"];
+            const thicknessOptions = ["Good", "Medium"];
+            const shineOptions = ["Excellent", "Good", "Medium"];
+            
+            const densityVal = densityOptions[Math.floor(Math.random() * densityOptions.length)];
+            const thicknessVal = thicknessOptions[Math.floor(Math.random() * thicknessOptions.length)];
+            const shineVal = shineOptions[Math.floor(Math.random() * shineOptions.length)];
+
+            const scalpOptions = ["Balanced & Hydrated", "Optimal Sebum Levels", "Slight Moisture Needed", "Dermal Barrier Strong"];
+            const fallOptions = ["Minimal Shedding", "Normal / Low Risk", "Trace Level"];
+            const textureOptions = ["Straight / Medium", "Wavy / Thick", "Curly / Balanced"];
+            const splitOptions = ["Low / Rare", "Trace at Tips", "None Observed"];
+            const drynessOptions = ["Low / Hydrated", "Moderate Tip Dryness", "Balanced Lipids"];
+            const frizzOptions = ["Low / Sealed", "Well-Controlled", "Slight Flyaways"];
+
+            const scalpVal = scalpOptions[Math.floor(Math.random() * scalpOptions.length)];
+            const fallVal = fallOptions[Math.floor(Math.random() * fallOptions.length)];
+            const textureVal = textureOptions[Math.floor(Math.random() * textureOptions.length)];
+            const splitVal = splitOptions[Math.floor(Math.random() * splitOptions.length)];
+            const drynessVal = drynessOptions[Math.floor(Math.random() * drynessOptions.length)];
+            const frizzVal = frizzOptions[Math.floor(Math.random() * frizzOptions.length)];
+
+            // Populate metadata
+            const serialNum = "AAR-SCAN-" + Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('rep-serial').innerText = serialNum;
+            
+            const today = new Date();
+            const formattedDate = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+            document.getElementById('rep-date').innerText = formattedDate;
+
+            // Set metric bars
+            setMetricBar('metric-density-bar', densityVal);
+            setMetricBar('metric-thickness-bar', thicknessVal);
+            setMetricBar('metric-shine-bar', shineVal);
+
+            // Set secondary characteristics
+            document.getElementById('char-scalp').innerText = scalpVal;
+            document.getElementById('char-fall').innerText = fallVal;
+            document.getElementById('char-texture').innerText = textureVal;
+            document.getElementById('char-split').innerText = splitVal;
+            document.getElementById('char-dryness').innerText = drynessVal;
+            document.getElementById('char-frizz').innerText = frizzVal;
+
+            // Generate custom summary paragraph based on metrics
+            let summaryText = `Based on the high-contrast computer vision assessment, your scalp exhibits **${scalpVal}** with **${fallVal}**. Your hair density is analyzed as **${densityVal}** with **${thicknessVal}** thickness. `;
+            
+            if (drynessVal.includes('Dryness') || frizzVal.includes('Flyaways')) {
+                summaryText += `Our AI detected mild moisture variances near the distal ends. We highly recommend infusing authentic cold-pressed botanical lipids to seal the cuticular shingles and prevent structural splitting.`;
+            } else {
+                summaryText += `The fiber cuticle exhibits superb alignment and a high light reflection coefficient (**${shineVal}** shine). Regular preventative maintenance with clinical botanical extracts will preserve this barrier health.`;
+            }
+            
+            document.getElementById('summary-text').innerHTML = summaryText;
+
+            // Update Wellness Tier & Score labels
+            let healthLabel = "Excellent Health";
+            let statusBadge = "Elite Gold Tier";
+            if (randomScore < 80) {
+                healthLabel = "Moderate Health";
+                statusBadge = "Silver Wellness Tier";
+            } else if (randomScore < 90) {
+                healthLabel = "Good Health";
+                statusBadge = "Gold Wellness Tier";
+            }
+            document.getElementById('score-health-label').innerText = healthLabel;
+            document.getElementById('score-status-badge').innerText = statusBadge;
+
+            // Reset circle fill offset
+            const fillCircle = document.getElementById('score-circle-fill');
+            if (fillCircle) {
+                fillCircle.style.strokeDashoffset = "377"; // Start hidden
+            }
+
+            // Trigger score transition and count animation
             setTimeout(() => {
-                clearInterval(textInterval);
-                scanningState.style.display = 'none';
-                laser.style.display = 'none';
-                grid.style.display = 'none';
-                finishedState.style.display = 'block';
+                // Animate circular progress meter
+                if (fillCircle) {
+                    const offset = 377 - (377 * randomScore / 100);
+                    fillCircle.style.strokeDashoffset = offset;
+                }
 
-                // Animate reporting bars inside drawer
-                setTimeout(() => {
-                    document.getElementById('bar-density').style.width = '88%';
-                    document.getElementById('bar-hydration').style.width = '62%';
-                    document.getElementById('bar-follicle').style.width = '79%';
-                }, 100);
-            }, 3800);
+                // Animate counter text
+                const scoreValText = document.getElementById('score-value-text');
+                if (scoreValText) {
+                    let currentVal = 0;
+                    const stepTime = Math.abs(Math.floor(2000 / randomScore));
+                    const countInterval = setInterval(() => {
+                        currentVal++;
+                        scoreValText.innerText = currentVal;
+                        if (currentVal >= randomScore) {
+                            clearInterval(countInterval);
+                        }
+                    }, stepTime);
+                }
+            }, 100);
+
+            // Re-enable analyze button
+            const btnAnalysis = document.getElementById('premium-analyze-btn');
+            if (btnAnalysis) btnAnalysis.removeAttribute('disabled');
+
+            // Smooth scroll to the report card
+            reportCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function switchCareTab(tab, event) {
+            // Hide all care tab contents
+            document.querySelectorAll('.care-tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Deactivate all care tab buttons
+            document.querySelectorAll('.care-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show current tab
+            const targetContent = document.getElementById('care-tab-content-' + tab);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+            
+            // Activate clicked button
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+        }
+
+        function resetPremiumScanner() {
+            // Clear file input
+            const fileInput = document.getElementById('premium-file-input');
+            if (fileInput) fileInput.value = '';
+            
+            // Reset preview and prompt
+            const imgPreview = document.getElementById('premium-image-preview');
+            if (imgPreview) {
+                imgPreview.src = '#';
+                imgPreview.classList.add('hidden');
+            }
+            
+            const uploadPrompt = document.getElementById('premium-upload-prompt');
+            if (uploadPrompt) uploadPrompt.classList.remove('hidden');
+            
+            // Disable analyze button
+            const analyzeBtn = document.getElementById('premium-analyze-btn');
+            if (analyzeBtn) analyzeBtn.setAttribute('disabled', 'true');
+            
+            // Hide scanning progress
+            const scanStatus = document.getElementById('premium-scanning-status');
+            if (scanStatus) scanStatus.style.display = 'none';
+            
+            // Reset progress bar & pct
+            const progressBar = document.getElementById('premium-progress-bar');
+            if (progressBar) progressBar.style.width = '0%';
+            const progressPct = document.getElementById('premium-progress-pct');
+            if (progressPct) progressPct.innerText = '0%';
+            
+            // Reset steps
+            document.querySelectorAll('.premium-status-item').forEach(step => {
+                step.className = 'premium-status-item';
+            });
+            
+            // Deactivate grid and laser and tracker boxes
+            const laser = document.getElementById('premium-laser');
+            if (laser) laser.classList.remove('premium-laser-anim');
+            const grid = document.getElementById('premium-grid');
+            if (grid) grid.classList.remove('active');
+            
+            const box1 = document.getElementById('premium-scan-box-1');
+            if (box1) box1.style.display = 'none';
+            const box2 = document.getElementById('premium-scan-box-2');
+            if (box2) box2.style.display = 'none';
+            
+            // Toggle reports
+            const reportEmpty = document.getElementById('premium-report-empty');
+            if (reportEmpty) reportEmpty.classList.remove('hidden');
+            const reportCard = document.getElementById('premium-report-card');
+            if (reportCard) reportCard.classList.add('hidden');
+        }
+
+        function scrollToOrderPageAndPreselect() {
+            switchTab('page-order');
+            setTimeout(() => {
+                const orderSection = document.getElementById('page-order');
+                if (orderSection) {
+                    orderSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 300);
         }
 
         // ===================================================
@@ -6352,6 +7151,39 @@ Please confirm my order. Thank you!`;
                 });
             });
             initTableSliders();
+
+            // Setup premium upload area drag and drop
+            const dropZone = document.getElementById('premium-drop-zone');
+            if (dropZone) {
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dropZone.addEventListener(eventName, (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropZone.classList.add('dragging');
+                    }, false);
+                });
+
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dropZone.addEventListener(eventName, (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropZone.classList.remove('dragging');
+                    }, false);
+                });
+
+                dropZone.addEventListener('drop', (e) => {
+                    const dt = e.dataTransfer;
+                    const files = dt.files;
+                    if (files.length) {
+                        const fileInput = document.getElementById('premium-file-input');
+                        if (fileInput) {
+                            fileInput.files = files;
+                            const event = { target: { files: files } };
+                            handlePremiumFileSelect(event);
+                        }
+                    }
+                }, false);
+            }
         });
 
         // Initialize custom high-contrast table sliders and drag scroll behaviors
