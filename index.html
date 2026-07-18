@@ -450,7 +450,7 @@
         }
 
         .hero-product-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: scale(1.02);
             border-color: var(--gold);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(212, 175, 55, 0.25);
         }
@@ -675,7 +675,7 @@
         }
 
         .usp-card:hover {
-            transform: translateY(-8px);
+            transform: scale(1.02);
             box-shadow: 0 20px 40px rgba(11, 47, 36, 0.06);
             border-color: rgba(212, 175, 55, 0.25);
         }
@@ -990,7 +990,7 @@
         }
 
         .future-card:hover {
-            transform: translateY(-6px);
+            transform: scale(1.02);
             border-color: var(--gold);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212,175,55,0.1);
         }
@@ -1235,7 +1235,7 @@
         }
 
         .vm-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
             box-shadow: 0 20px 40px rgba(9, 34, 25, 0.08);
             border-color: var(--gold);
         }
@@ -1301,7 +1301,7 @@
         }
 
         .why-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
             background: rgba(18, 60, 45, 0.65);
             border-color: var(--gold);
         }
@@ -1930,7 +1930,7 @@
         }
 
         .dl-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
             border-color: var(--gold);
             box-shadow: 0 15px 35px rgba(9, 34, 25, 0.05);
         }
@@ -1978,7 +1978,7 @@
         }
 
         .founder-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
             border-color: var(--gold);
             box-shadow: 0 20px 45px rgba(9, 34, 25, 0.08);
         }
@@ -3614,6 +3614,53 @@
                             </div>
                         </div>
 
+                        <!-- Report Request Form (Hidden initially) -->
+                        <div id="premium-report-form" class="premium-glass-card p-6 md:p-8 flex flex-col gap-6 hidden" style="background: rgba(11, 47, 36, 0.45); border-color: rgba(212, 175, 55, 0.3);">
+                            <div class="text-center border-b border-white border-opacity-10 pb-4">
+                                <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-[#D4AF37] block mb-1">AARANYA™ Secure Diagnostics Portal</span>
+                                <h3 class="font-serif text-2xl text-[#F4E6C1]">Unlock Your Hair Wellness Report</h3>
+                                <p class="text-xs text-opacity-70 text-[#F8F7F3] mt-2 max-w-sm mx-auto leading-relaxed">
+                                    Your high-precision hair scan has completed successfully. Please provide your details below to generate and view your clinical botanical report instantly.
+                                </p>
+                            </div>
+
+                            <form id="premium-user-form" onsubmit="submitPremiumReportForm(event)" class="flex flex-col gap-4">
+                                <div>
+                                    <label class="label-luxury" for="premium-user-name">Full Name *</label>
+                                    <input type="text" id="premium-user-name" required class="input-luxury" placeholder="Enter your full name">
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="label-luxury" for="premium-user-mobile">Mobile Number *</label>
+                                        <input type="tel" id="premium-user-mobile" required class="input-luxury" placeholder="Enter mobile number" pattern="[0-9]{10,12}" title="Please enter a valid phone number (10-12 digits).">
+                                    </div>
+                                    <div>
+                                        <label class="label-luxury" for="premium-user-whatsapp">WhatsApp Number *</label>
+                                        <input type="tel" id="premium-user-whatsapp" required class="input-luxury" placeholder="Enter WhatsApp number" pattern="[0-9]{10,12}" title="Please enter a valid phone number (10-12 digits).">
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="label-luxury" for="premium-user-email">Email Address (Optional)</label>
+                                        <input type="email" id="premium-user-email" class="input-luxury" placeholder="Enter your email address">
+                                    </div>
+                                    <div>
+                                        <label class="label-luxury" for="premium-user-city">City *</label>
+                                        <input type="text" id="premium-user-city" required class="input-luxury" placeholder="Enter your city">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-premium py-4 w-full font-bold text-sm tracking-wider uppercase mt-2">
+                                    Generate My FREE Hair Report
+                                </button>
+                            </form>
+                            
+                            <!-- Small Disclaimer in the Form -->
+                            <p class="text-[10px] text-center text-opacity-50 text-[#F8F7F3] leading-relaxed">
+                                🔒 Your personal information is encrypted and held secure. It will be used only to prepare your customized hair wellness breakdown and consultation.
+                            </p>
+                        </div>
+
                         <!-- Real Report Dashboard (Hidden initially) -->
                         <div id="premium-report-card" class="premium-glass-card p-6 md:p-8 flex flex-col gap-8 hidden" style="background: rgba(5, 20, 15, 0.75);">
                             <!-- Header Info -->
@@ -3626,6 +3673,13 @@
                                     <span>ID: <strong id="rep-serial" class="text-[#D4AF37]">AAR-SCAN-98321</strong></span>
                                     <span>DATE: <strong id="rep-date">2026-07-17</strong></span>
                                 </div>
+                            </div>
+
+                            <!-- Client Info Block -->
+                            <div class="flex flex-wrap justify-between items-center text-xs text-opacity-70 text-[#F8F7F3] bg-[#0B2F24] bg-opacity-40 py-2.5 px-4 rounded-xl border border-[#D4AF37] border-opacity-10 gap-2">
+                                <span>CLIENT: <strong id="rep-client-name" class="text-[#F4E6C1]">John Doe</strong></span>
+                                <span>CITY: <strong id="rep-client-city" class="text-[#F4E6C1]">Mumbai</strong></span>
+                                <span>CONTACT: <strong id="rep-client-phone" class="text-[#F4E6C1]">9876543210</strong></span>
                             </div>
 
                             <!-- Score & Primary Metrics Bento -->
@@ -3829,6 +3883,19 @@
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Report Action Buttons Row -->
+                            <div class="flex flex-col sm:flex-row gap-4 border-t border-white border-opacity-10 pt-6">
+                                <button onclick="downloadPremiumReport()" class="flex-1 py-4 border border-[#D4AF37] border-opacity-30 hover:border-opacity-60 rounded-xl font-mono text-xs tracking-wider uppercase text-[#D4AF37] hover:bg-white hover:bg-opacity-5 transition duration-300" style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                    📥 Download Report
+                                </button>
+                                <button onclick="scrollToOrderPageAndPreselect()" class="flex-1 btn-premium py-4 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                                    🛒 Order Now
+                                </button>
+                                <a id="rep-whatsapp-btn" href="https://wa.me/918077960042" target="_blank" class="flex-1 py-4 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-xl font-mono text-xs font-bold tracking-wider uppercase text-center transition duration-300 flex items-center justify-center gap-2" style="text-decoration: none;">
+                                    💬 Chat on WhatsApp
+                                </a>
                             </div>
 
                             <!-- Premium Disclaimer -->
@@ -5889,8 +5956,26 @@
 
             .why-luxury-card:hover {
                 border-color: #D4AF37;
-                transform: translateY(-4px);
+                transform: scale(1.02);
                 box-shadow: 0 15px 30px rgba(212, 175, 55, 0.08);
+            }
+
+            .luxury-list-tile {
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                border: 1.5px solid rgba(212, 175, 55, 0.1);
+                border-left: 3px solid #D4AF37 !important;
+                border-radius: 10px;
+                padding: 12px;
+                background: rgba(255,255,255,0.02);
+                cursor: pointer;
+            }
+
+            .luxury-list-tile:hover {
+                transform: scale(1.02);
+                border-color: rgba(212, 175, 55, 0.35);
+                border-left-color: #F4E6C1 !important;
+                background: rgba(255, 255, 255, 0.06) !important;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
             }
 
             /* Custom Animation */
@@ -6002,35 +6087,35 @@
                             <span style="font-size: 20px;">✦</span> What's Included in the System
                         </h3>
                         <div style="display: flex; flex-direction: column; gap: 15px;">
-                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
                                 <div style="color: #D4AF37; font-size: 18px;">🌿</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Premium Botanical Hair Oil</strong>
                                     <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">100ml formulation with clinical grade Ayurvedic extracts.</span>
                                 </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
                                 <div style="color: #D4AF37; font-size: 18px;">📖</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Hair Care Guide</strong>
                                     <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Comprehensive handbook to accelerate your hair transformation journey.</span>
                                 </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
                                 <div style="color: #D4AF37; font-size: 18px;">📅</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Weekly Hair Care Plan</strong>
                                     <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Curated calendar to maximize follicle stimulation.</span>
                                 </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
                                 <div style="color: #D4AF37; font-size: 18px;">💻</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Free AI Hair Analysis</strong>
                                     <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Complimentary scan access with real-time bio-metric tracking.</span>
                                 </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
                                 <div style="color: #D4AF37; font-size: 18px;">📞</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Customer Support</strong>
@@ -6749,7 +6834,7 @@ Please confirm my order. Thank you!`;
                     
                     // Short delay to let user register the 100% state
                     setTimeout(() => {
-                        completePremiumAnalysis();
+                        showPremiumReportForm();
                     }, 600);
                 }
             }, 60); // Total scanning time around 3 seconds
@@ -6792,7 +6877,7 @@ Please confirm my order. Thank you!`;
             }
         }
 
-        function completePremiumAnalysis() {
+        function showPremiumReportForm() {
             // Turn off scanning visuals
             const laser = document.getElementById('premium-laser');
             if (laser) laser.classList.remove('premium-laser-anim');
@@ -6804,13 +6889,57 @@ Please confirm my order. Thank you!`;
             const box2 = document.getElementById('premium-scan-box-2');
             if (box2) box2.style.display = 'none';
 
-            // Hide empty report panel state
+            // Hide empty state
             const reportEmpty = document.getElementById('premium-report-empty');
             if (reportEmpty) reportEmpty.classList.add('hidden');
+
+            // Hide report card (in case of re-scan)
+            const reportCard = document.getElementById('premium-report-card');
+            if (reportCard) reportCard.classList.add('hidden');
+
+            // Show form panel
+            const reportForm = document.getElementById('premium-report-form');
+            if (reportForm) {
+                reportForm.classList.remove('hidden');
+                reportForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function submitPremiumReportForm(event) {
+            event.preventDefault();
             
+            // Validate inputs
+            const name = document.getElementById('premium-user-name').value;
+            const mobile = document.getElementById('premium-user-mobile').value;
+            const whatsapp = document.getElementById('premium-user-whatsapp').value;
+            const email = document.getElementById('premium-user-email').value;
+            const city = document.getElementById('premium-user-city').value;
+            
+            if (!name || !mobile || !whatsapp || !city) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            // Hide form panel
+            const reportForm = document.getElementById('premium-report-form');
+            if (reportForm) reportForm.classList.add('hidden');
+
+            // Complete analysis and show the actual report dashboard!
+            completePremiumAnalysis(name, mobile, whatsapp, email, city);
+        }
+
+        function completePremiumAnalysis(name = "Valued Client", mobile = "N/A", whatsapp = "N/A", email = "", city = "India") {
             // Show report card state
             const reportCard = document.getElementById('premium-report-card');
             if (reportCard) reportCard.classList.remove('hidden');
+
+            // Populate Client Info
+            const clName = document.getElementById('rep-client-name');
+            if (clName) clName.innerText = name;
+            const clCity = document.getElementById('rep-client-city');
+            if (clCity) clCity.innerText = city;
+            const clPhone = document.getElementById('rep-client-phone');
+            if (clPhone) clPhone.innerText = mobile;
 
             // Generate randomized metrics for premium presentation
             const randomScore = Math.floor(75 + Math.random() * 19); // 75 to 93
@@ -6836,6 +6965,13 @@ Please confirm my order. Thank you!`;
             const splitVal = splitOptions[Math.floor(Math.random() * splitOptions.length)];
             const drynessVal = drynessOptions[Math.floor(Math.random() * drynessOptions.length)];
             const frizzVal = frizzOptions[Math.floor(Math.random() * frizzOptions.length)];
+
+            // Customize WhatsApp Chat Button Link with results
+            const whatsappBtn = document.getElementById('rep-whatsapp-btn');
+            if (whatsappBtn) {
+                const textMessage = encodeURIComponent(`Hi AARANYA™, my name is ${name} from ${city}. I just completed the AI Hair Wellness Analysis and scored ${randomScore}/100!\nDensity: ${densityVal}\nThickness: ${thicknessVal}\nShine: ${shineVal}\nTexture: ${textureVal}\nDryness: ${drynessVal}\nFrizz: ${frizzVal}\nPlease help me start my hair transformation journey with your Premium Botanical Hair Oil!`);
+                whatsappBtn.href = `https://wa.me/918077960042?text=${textMessage}`;
+            }
 
             // Populate metadata
             const serialNum = "AAR-SCAN-" + Math.floor(10000 + Math.random() * 90000);
@@ -6917,6 +7053,60 @@ Please confirm my order. Thank you!`;
 
             // Smooth scroll to the report card
             reportCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function downloadPremiumReport() {
+            showLuxuryNotification("Generating Report", "Preparing your high-resolution AARANYA™ AI Hair Wellness PDF report...");
+            
+            setTimeout(() => {
+                const reportContent = document.getElementById('premium-report-card').innerHTML;
+                const printWindow = window.open('', '_blank');
+                if (!printWindow) {
+                    window.print();
+                    return;
+                }
+                
+                printWindow.document.write(`
+                    <html>
+                    <head>
+                        <title>AARANYA™ AI Hair Wellness Report</title>
+                        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+                        <script src="https://cdn.tailwindcss.com"></script>
+                        <style>
+                            body {
+                                background: #05140F;
+                                color: #F8F7F3;
+                                font-family: 'Plus Jakarta Sans', sans-serif;
+                                padding: 40px;
+                            }
+                            .text-opacity-70 { color: rgba(248, 247, 243, 0.7); }
+                            .text-opacity-65 { color: rgba(248, 247, 243, 0.65); }
+                            .text-opacity-60 { color: rgba(248, 247, 243, 0.6); }
+                            .text-opacity-55 { color: rgba(248, 247, 243, 0.55); }
+                            .text-opacity-50 { color: rgba(248, 247, 243, 0.5); }
+                            .text-opacity-40 { color: rgba(248, 247, 243, 0.4); }
+                            .border-opacity-10 { border-color: rgba(255, 255, 255, 0.1); }
+                            .border-opacity-5 { border-color: rgba(255, 255, 255, 0.05); }
+                            .bg-opacity-5 { background-color: rgba(255, 255, 255, 0.05); }
+                            .bg-opacity-40 { background-color: rgba(11, 47, 36, 0.4); }
+                            button, a { display: none !important; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="max-w-4xl mx-auto border border-[#D4AF37] border-opacity-30 p-8 rounded-3xl bg-[#092219]">
+                            ${reportContent}
+                        </div>
+                        <script>
+                            window.onload = function() {
+                                window.print();
+                                setTimeout(function() { window.close(); }, 500);
+                            };
+                        <\/script>
+                    </body>
+                    </html>
+                `);
+                printWindow.document.close();
+            }, 1000);
         }
 
         function switchCareTab(tab, event) {
