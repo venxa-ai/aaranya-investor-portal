@@ -2952,7 +2952,7 @@
             }
         }
 
-        /* UNIFIED LUXURY CARDS SMOOTHNESS OVERRIDE (PREVENTS JITTER, SHIVERING, DANCING ON HOVER & CLICK) */
+        /* UNIFIED PREMIUM INTERACTION SYSTEM OVERRIDES (APPLE-STYLE SMOOTHNESS) */
         .usp-card,
         .why-card,
         .metric-card,
@@ -2972,24 +2972,108 @@
         .video-card,
         .trust-card,
         .social-card,
-        .premium-glass-card {
+        .premium-glass-card,
+        .payment-luxury-pill,
+        .btn,
+        .btn-gold,
+        .btn-outline,
+        .btn-premium,
+        .btn-luxury-action,
+        .btn-whatsapp-luxury,
+        .btn-outline-luxury,
+        .care-tab-btn,
+        button,
+        input[type="submit"],
+        a.btn,
+        a.btn-premium,
+        a.btn-luxury-action,
+        a.btn-whatsapp-luxury,
+        a.btn-outline-luxury,
+        .nav-btn,
+        .mobile-toggle,
+        .slider-arrow-btn {
             /* Force GPU hardware acceleration & subpixel layout stabilization */
-            will-change: transform, box-shadow, border-color;
+            will-change: transform;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
             
-            /* Clean up transition properties to target only explicit non-layout variables */
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            /* Apply ONLY the requested optimized transitions */
+            transition:
+                background-color .25s ease,
+                border-color .25s ease,
+                color .25s ease,
+                transform .15s ease !important;
         }
 
-        /* Solid active state compression response - stabilizes layout and prevents rapid scale toggle jitter */
+        /* Force pointer-events: auto on all interactive elements */
+        button,
+        a,
+        input,
+        select,
+        textarea,
+        .btn,
+        .btn-gold,
+        .btn-outline,
+        .btn-premium,
+        .btn-luxury-action,
+        .btn-whatsapp-luxury,
+        .btn-outline-luxury,
+        .care-tab-btn,
+        .nav-btn,
+        .mobile-toggle,
+        .slider-arrow-btn,
+        .payment-luxury-pill,
+        [onclick] {
+            pointer-events: auto !important;
+        }
+
+        /* Hover lift by exactly 2px with absolutely no scaling or other jitter */
+        .usp-card:hover,
+        .why-card:hover,
+        .metric-card:hover,
+        .future-card:hover,
+        .vm-card:hover,
+        .dl-card:hover,
+        .founder-card:hover,
+        .why-luxury-card:hover,
+        .luxury-list-tile:hover,
+        .hero-product-card:hover,
+        .how-works-step:hover,
+        .income-example-card:hover,
+        .women-love-item:hover,
+        .ba-card:hover,
+        .stat-card:hover,
+        .review-card:hover,
+        .video-card:hover,
+        .trust-card:hover,
+        .social-card:hover,
+        .premium-glass-card:hover,
+        .payment-luxury-pill:hover,
+        .btn:hover,
+        .btn-gold:hover,
+        .btn-outline:hover,
+        .btn-premium:hover,
+        .btn-luxury-action:hover,
+        .btn-whatsapp-luxury:hover,
+        .btn-outline-luxury:hover,
+        .care-tab-btn:hover,
+        button:hover,
+        input[type="submit"]:hover,
+        a.btn:hover,
+        a.btn-premium:hover,
+        a.btn-luxury-action:hover,
+        a.btn-whatsapp-luxury:hover,
+        a.btn-outline-luxury:hover,
+        .nav-btn:hover,
+        .mobile-toggle:hover,
+        .slider-arrow-btn:hover {
+            transform: translateY(-2px) !important;
+            scale: 1 !important;
+        }
+
+        /* Active translation exactly 1px down with no scale, shaking, or layout movement */
         .usp-card:active,
         .why-card:active,
         .metric-card:active,
@@ -3009,10 +3093,28 @@
         .video-card:active,
         .trust-card:active,
         .social-card:active,
-        .premium-glass-card:active {
-            transform: scale(0.98) !important;
-            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
+        .premium-glass-card:active,
+        .payment-luxury-pill:active,
+        .btn:active,
+        .btn-gold:active,
+        .btn-outline:active,
+        .btn-premium:active,
+        .btn-luxury-action:active,
+        .btn-whatsapp-luxury:active,
+        .btn-outline-luxury:active,
+        .care-tab-btn:active,
+        button:active,
+        input[type="submit"]:active,
+        a.btn:active,
+        a.btn-premium:active,
+        a.btn-luxury-action:active,
+        a.btn-whatsapp-luxury:active,
+        a.btn-outline-luxury:active,
+        .nav-btn:active,
+        .mobile-toggle:active,
+        .slider-arrow-btn:active {
+            transform: translateY(1px) !important;
+            scale: 1 !important;
         }
     </style>
 </head>
@@ -5519,11 +5621,11 @@
             
             <div class="video-grid">
                 <!-- Video Card 1 -->
-                <div class="video-card">
+                <div class="video-card" style="cursor: pointer;" onclick="openTestimonialVideo('Pooja Gowda', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop', 'How a 90-day botanical routine completely saved my post-pregnancy hair thinning and rebuilt core follicle strength.')">
                     <div class="video-thumbnail-wrapper">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" alt="Pooja Gowda Video Portrait" class="video-thumbnail" referrerPolicy="no-referrer">
                         <div class="video-overlay-gradient"></div>
-                        <div class="video-play-btn" onclick="openTestimonialVideo('Pooja Gowda', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop', 'How a 90-day botanical routine completely saved my post-pregnancy hair thinning and rebuilt core follicle strength.')">
+                        <div class="video-play-btn">
                             <svg width="18" height="20" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                         </div>
                     </div>
@@ -5534,11 +5636,11 @@
                 </div>
 
                 <!-- Video Card 2 -->
-                <div class="video-card">
+                <div class="video-card" style="cursor: pointer;" onclick="openTestimonialVideo('Aisha Khan', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600&auto=format&fit=crop', 'Going from extreme styling heat damage and split ends to thick, bouncy and shiny organic curls with the help of Rosemary and Bhringraj active serums.')">
                     <div class="video-thumbnail-wrapper">
                         <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600&auto=format&fit=crop" alt="Aisha Khan Video Portrait" class="video-thumbnail" referrerPolicy="no-referrer">
                         <div class="video-overlay-gradient"></div>
-                        <div class="video-play-btn" onclick="openTestimonialVideo('Aisha Khan', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600&auto=format&fit=crop', 'Going from extreme styling heat damage and split ends to thick, bouncy and shiny organic curls with the help of Rosemary and Bhringraj active serums.')">
+                        <div class="video-play-btn">
                             <svg width="18" height="20" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                         </div>
                     </div>
@@ -5549,11 +5651,11 @@
                 </div>
 
                 <!-- Video Card 3 -->
-                <div class="video-card">
+                <div class="video-card" style="cursor: pointer;" onclick="openTestimonialVideo('Divya Roy', 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop', 'How corporate lifestyle stress triggered chronic hair loss, and how Aaranya customized my diagnosis to bring my crown thickness and fullness back.')">
                     <div class="video-thumbnail-wrapper">
                         <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Divya Roy Video Portrait" class="video-thumbnail" referrerPolicy="no-referrer">
                         <div class="video-overlay-gradient"></div>
-                        <div class="video-play-btn" onclick="openTestimonialVideo('Divya Roy', 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop', 'How corporate lifestyle stress triggered chronic hair loss, and how Aaranya customized my diagnosis to bring my crown thickness and fullness back.')">
+                        <div class="video-play-btn">
                             <svg width="18" height="20" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                         </div>
                     </div>
@@ -5727,67 +5829,75 @@
     <!-- PAGE 4: CONTACT (PRESERVING ORIGINAL LAYOUT AND CONTENT INTACT) -->
     <div id="page-contact" class="page-container">
     <!-- 14. CONTACT SECTION -->
-    <section class="contact" id="contact">
+    <section class="contact" id="contact" style="background: linear-gradient(180deg, #05140F 0%, #0B2F24 50%, #05140F 100%); padding: 100px 0;">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-sidebar">
-                    <span class="section-tag">12 / Strategic Alliance</span>
-                    <h3>Let's Connect</h3>
-                    <p>Formal portal for loan underwriters, corporate distributors, and institutional investment scouts seeking structured business discussions.</p>
+                <div class="contact-sidebar" style="background: rgba(11, 47, 36, 0.45); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px rgba(5, 20, 15, 0.4);">
+                    <span class="section-tag" style="color: #D4AF37; font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 10px;">Contact & Support</span>
+                    <h2 class="brand-font" style="font-family: 'Playfair Display', serif; font-size: 38px; color: #F4E6C1; margin-bottom: 5px; letter-spacing: 0.05em;">AARANYA™</h2>
+                    <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #D4AF37; margin-bottom: 8px; font-weight: 500;">A Premium Hair Transformation Brand</h4>
+                    <p style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: rgba(248, 247, 243, 0.6); margin-bottom: 30px; letter-spacing: 0.05em; text-transform: uppercase;">A Brand of Venxa AI</p>
                     
-                    <div class="contact-info">
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                            </div>
+                    <div class="contact-info" style="display: flex; flex-direction: column; gap: 25px; margin-bottom: 40px;">
+                        <div class="info-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="info-icon" style="color: #D4AF37; font-size: 20px;">📞</div>
                             <div class="info-text">
-                                <h5>Corporate Communications</h5>
-                                <p>ir@aaranya.com</p>
+                                <h5 style="color: rgba(248, 247, 243, 0.55); font-size: 11px; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px;">Phone</h5>
+                                <p style="color: #FFFFFF; font-size: 16px; font-weight: 500; margin: 0;">+91 8077960042</p>
                             </div>
                         </div>
 
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                </svg>
-                            </div>
+                        <div class="info-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="info-icon" style="color: #D4AF37; font-size: 20px;">💬</div>
                             <div class="info-text">
-                                <h5>Headquarters & Factory</h5>
-                                <p>Company Name AARANYA™<br>A Premium Hair Transformation Brand<br>Rooted in Nature. Crafted for Confidence.<br>Address Mohala Batwal Amroha<br>Pin 244221  Phone Number 8077960042 Company Name AARANYA™</p>
+                                <h5 style="color: rgba(248, 247, 243, 0.55); font-size: 11px; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px;">WhatsApp</h5>
+                                <p style="color: #FFFFFF; font-size: 16px; font-weight: 500; margin: 0;">+91 8077960042</p>
                             </div>
                         </div>
+
+                        <div class="info-item" style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div class="info-icon" style="color: #D4AF37; font-size: 20px;">✉️</div>
+                            <div class="info-text">
+                                <h5 style="color: rgba(248, 247, 243, 0.55); font-size: 11px; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px;">Email</h5>
+                                <p style="color: #FFFFFF; font-size: 16px; font-weight: 500; margin: 0;">support@venxaai.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <a href="https://wa.me/918077960042" target="_blank" class="btn-whatsapp-luxury" style="text-decoration: none; text-align: center; display: inline-flex; width: 100%; box-sizing: border-box;">
+                            💬 Chat on WhatsApp
+                        </a>
+                        <a href="tel:+918077960042" class="btn-outline-luxury" style="text-decoration: none; text-align: center; display: inline-flex; justify-content: center; width: 100%; box-sizing: border-box;">
+                            📞 Call Now
+                        </a>
                     </div>
                 </div>
 
-                <div class="contact-form">
-                    <div class="success-banner" id="success-message">
-                        Thank you for your inquiry. Our Lead Investor Relations Underwriter has been notified and will contact you within 1 business day.
+                <div class="contact-form" style="background: rgba(11, 47, 36, 0.45); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px rgba(5, 20, 15, 0.4);">
+                    <div class="success-banner" id="success-message" style="display: none; background: rgba(18, 60, 45, 0.05); border: 1.5px dashed rgba(212, 175, 55, 0.25); color: #F4E6C1; padding: 20px; border-radius: 12px; margin-bottom: 24px; font-size: 14px; text-align: center; line-height: 1.5;">
+                        ✨ Thank you! Your Support Inquiry has been successfully transmitted. Our dedicated Aaranya Hair Wellness team will contact you shortly.
                     </div>
-                    <form onsubmit="submitForm(event)">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" class="form-control" required placeholder="eg. Rahul Sharma">
-                            </div>
-                            <div class="form-group">
-                                <label for="institution">Institution / Bank</label>
-                                <input type="text" id="institution" class="form-control" required placeholder="eg. State Bank of India">
-                            </div>
+                    <form onsubmit="submitSupportForm(event)" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div>
+                            <label class="label-luxury" for="s-name">Name *</label>
+                            <input type="text" id="s-name" class="input-luxury" required placeholder="eg. Priyanka Patel">
                         </div>
-                        <div class="form-group">
-                            <label for="email">Institutional Email</label>
-                            <input type="email" id="email" class="form-control" required placeholder="eg. r.sharma@sbi.co.in">
+                        <div>
+                            <label class="label-luxury" for="s-mobile">Mobile Number *</label>
+                            <input type="tel" id="s-mobile" class="input-luxury" required placeholder="eg. +91 8077960042" pattern="[0-9]{10,12}">
                         </div>
-                        <div class="form-group">
-                            <label for="message">Detailed Inquiry Description</label>
-                            <textarea id="message" class="form-control" required placeholder="Please outline your requirements regarding collateral, audits, or wholesale distributor terms..."></textarea>
+                        <div>
+                            <label class="label-luxury" for="s-email">Email Address *</label>
+                            <input type="email" id="s-email" class="input-luxury" required placeholder="eg. priyanka@gmail.com">
                         </div>
-                        <button type="submit" class="btn btn-gold" style="width: 100%;">Submit Formal Inquiry</button>
+                        <div>
+                            <label class="label-luxury" for="s-message">Message *</label>
+                            <textarea id="s-message" class="input-luxury" required rows="4" placeholder="How can we assist you with your hair wellness journey today?" style="resize: none;"></textarea>
+                        </div>
+                        <button type="submit" class="btn-luxury-action" style="width: 100%;">
+                            ✉️ Send Message
+                        </button>
                     </form>
                 </div>
             </div>
@@ -5968,7 +6078,11 @@
                 border-radius: 12px;
                 padding: 14px 18px;
                 cursor: pointer;
-                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                transition:
+                    background-color .25s ease,
+                    border-color .25s ease,
+                    color .25s ease,
+                    transform .15s ease;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -6150,35 +6264,35 @@
                             <span style="font-size: 20px;">✦</span> What's Included in the System
                         </h3>
                         <div style="display: flex; flex-direction: column; gap: 15px;">
-                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;" onclick="switchTab('page-product-details')">
                                 <div style="color: #D4AF37; font-size: 18px;">🌿</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Premium Botanical Hair Oil</strong>
                                     <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">100ml formulation with clinical grade Ayurvedic extracts.</span>
                                 </div>
                             </div>
-                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;" onclick="switchTab('page-hair-care-guide')">
                                 <div style="color: #D4AF37; font-size: 18px;">📖</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Hair Care Guide</strong>
                                     <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Comprehensive handbook to accelerate your hair transformation journey.</span>
                                 </div>
                             </div>
-                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;" onclick="switchTab('page-hair-care-planner')">
                                 <div style="color: #D4AF37; font-size: 18px;">📅</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Weekly Hair Care Plan</strong>
                                     <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Curated calendar to maximize follicle stimulation.</span>
                                 </div>
                             </div>
-                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;" onclick="scrollToScanner()">
                                 <div style="color: #D4AF37; font-size: 18px;">💻</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Free AI Hair Analysis</strong>
                                     <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Complimentary scan access with real-time bio-metric tracking.</span>
                                 </div>
                             </div>
-                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="luxury-list-tile" style="display: flex; align-items: center; gap: 15px;" onclick="switchTab('page-contact')">
                                 <div style="color: #D4AF37; font-size: 18px;">📞</div>
                                 <div>
                                     <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Customer Support</strong>
@@ -6664,11 +6778,310 @@ Please confirm my order. Thank you!`;
                 document.getElementById('luxury-notification-banner').style.display = 'block';
             }
 
-            function closeLuxuryNotification() {
-                document.getElementById('luxury-notification-banner').style.display = 'none';
-            }
         </script>
     </div> <!-- END OF PAGE 5 -->
+
+    <!-- PAGE: PRODUCT DETAILS -->
+    <div id="page-product-details" class="page-container">
+        <section class="py-16 px-4" style="background: linear-gradient(180deg, #05140F 0%, #0B2F24 50%, #05140F 100%); min-height: 80vh;">
+            <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+                <!-- Back Button -->
+                <button onclick="switchTab('page-order')" class="btn-outline-luxury" style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; padding: 10px 20px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.3); color: #F4E6C1; border-radius: 6px; cursor: pointer;">
+                    ← Back to Order Page
+                </button>
+
+                <div style="display: grid; grid-template-columns: 1fr; md:grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;" class="grid grid-cols-1 md:grid-cols-2">
+                    <!-- Left: Product Image -->
+                    <div style="text-align: center;">
+                        <img src="aaranya_hair_oil.jpg" alt="AARANYA™ Premium Botanical Hair Oil" style="width: 100%; max-width: 420px; height: auto; border-radius: 24px; border: 1.5px solid rgba(212, 175, 55, 0.35); box-shadow: 0 25px 65px rgba(5, 20, 15, 0.6); margin: 0 auto; object-fit: cover;">
+                    </div>
+
+                    <!-- Right: Product Description -->
+                    <div class="glass-luxury-container" style="padding: 40px; background: rgba(11, 47, 36, 0.45); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px;">
+                        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; color: #D4AF37; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 10px;">Premium Diagnostics System</span>
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 34px; color: #F4E6C1; margin-bottom: 5px; line-height: 1.2;">Premium Botanical Hair Oil</h2>
+                        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.7); display: block; margin-bottom: 25px; font-weight: 500;">Volume: 100ml</span>
+
+                        <div style="border-top: 1px solid rgba(212, 175, 55, 0.15); border-bottom: 1px solid rgba(212, 175, 55, 0.15); padding: 25px 0; margin-bottom: 25px;">
+                            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                                <li style="display: flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; color: #FFFFFF;">
+                                    <span style="color: #D4AF37;">✦</span> Premium Rosemary & Bhringraj Formula
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; color: #FFFFFF;">
+                                    <span style="color: #D4AF37;">✦</span> Natural Botanical Ingredients
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; color: #FFFFFF;">
+                                    <span style="color: #D4AF37;">✦</span> Silicone Free
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; color: #FFFFFF;">
+                                    <span style="color: #D4AF37;">✦</span> Mineral Oil Free
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; color: #FFFFFF;">
+                                    <span style="color: #D4AF37;">✦</span> Cruelty Free
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; color: #FFFFFF;">
+                                    <span style="color: #D4AF37;">✦</span> Premium Luxury Packaging
+                                </li>
+                                <li style="display: flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; color: #FFFFFF;">
+                                    <span style="color: #D4AF37;">✦</span> AI Hair Wellness Support
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Price tag -->
+                        <div style="margin-bottom: 30px; display: flex; align-items: baseline; gap: 15px;">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.5); text-decoration: line-through;">MRP ₹999</span>
+                            <span style="font-family: 'Playfair Display', serif; font-size: 32px; color: #D4AF37; font-weight: 700;">₹699</span>
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: #25D366; background: rgba(37, 211, 102, 0.1); padding: 4px 10px; border-radius: 4px; font-weight: 600;">Launch Offer - 30% OFF</span>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <button onclick="scrollToCheckoutForm()" class="btn-premium" style="width: 100%; justify-content: center; padding: 16px; font-size: 14px; cursor: pointer; text-transform: uppercase; font-weight: bold; letter-spacing: 0.1em; border-radius: 12px; border: none; background: linear-gradient(135deg, #AA8226 0%, #D4AF37 100%); color: #05140F;">
+                                🛒 Buy Now
+                            </button>
+                            <a href="https://wa.me/918077960042?text=Hello%20Aaranya%21%20I%20want%20to%20order%20the%20AARANYA%E2%84%A2%20Premium%20Botanical%20Hair%20Oil%20%28100ml%29%20at%20the%20Launch%20Offer%20of%20%E2%82%B9699." target="_blank" class="btn-whatsapp-luxury" style="text-decoration: none; text-align: center; display: inline-flex; width: 100%; box-sizing: border-box; justify-content: center; padding: 16px; font-size: 14px; font-weight: bold; font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.1em; border-radius: 12px; background: #25D366; color: #FFFFFF; transition: 0.3s; text-transform: uppercase;">
+                                💬 Order on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: HAIR CARE GUIDE -->
+    <div id="page-hair-care-guide" class="page-container">
+        <section class="py-16 px-4" style="background: linear-gradient(180deg, #05140F 0%, #0B2F24 50%, #05140F 100%); min-height: 80vh;">
+            <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 20px;">
+                <!-- Back Button -->
+                <button onclick="switchTab('page-order')" class="btn-outline-luxury" style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; padding: 10px 20px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.3); color: #F4E6C1; border-radius: 6px; cursor: pointer;">
+                    ← Back to Order Page
+                </button>
+
+                <div class="text-center" style="margin-bottom: 50px;">
+                    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 15px;">Elite Wellness Library</span>
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; color: #F4E6C1; margin-bottom: 12px;">AARANYA™ Hair Care Guide</h2>
+                    <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: rgba(248, 247, 243, 0.7); max-width: 600px; margin: 0 auto; line-height: 1.6;">Your comprehensive handbook containing optimized routines, expert strategies, and dietary guidelines to support your complete hair transformation journey.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr; md:grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px;" class="grid grid-cols-1 md:grid-cols-2">
+                    <!-- Morning Routine -->
+                    <div class="glass-luxury-container" style="padding: 30px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <span style="font-size: 24px;">☀️</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: #F4E6C1; margin: 0;">Morning Hair Routine</h3>
+                        </div>
+                        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.6;">Gently detangle your dry strands with a premium neem wood wide-tooth comb. Spray a lightweight, soothing botanical mist or hydration base directly onto the scalp to refresh follicles and provide an active shield for the day.</p>
+                    </div>
+
+                    <!-- Night Routine -->
+                    <div class="glass-luxury-container" style="padding: 30px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <span style="font-size: 24px;">🌙</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: #F4E6C1; margin: 0;">Night Hair Routine</h3>
+                        </div>
+                        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.6;">Apply 2-3 drops of AARANYA™ Hair Oil to your ends. Perform a slow, methodical 3-minute scalp massage using fingertip pads to soothe systemic tension and trigger root blood flow. Protect hair with a premium silk or satin pillowcase.</p>
+                    </div>
+
+                    <!-- Weekly Oil Massage -->
+                    <div class="glass-luxury-container" style="padding: 30px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <span style="font-size: 24px;">💆</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: #F4E6C1; margin: 0;">Weekly Oil Massage</h3>
+                        </div>
+                        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.6;">Warm 1-1.5 tablespoons of AARANYA™ Premium Botanical Hair Oil. Section your hair meticulously and apply directly onto the scalp. Massage systematically in slow, circular motions. Leave on for at least 45 minutes or overnight before washing.</p>
+                    </div>
+
+                    <!-- Correct Washing Method -->
+                    <div class="glass-luxury-container" style="padding: 30px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <span style="font-size: 24px;">🧼</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: #F4E6C1; margin: 0;">Correct Hair Washing Method</h3>
+                        </div>
+                        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.6;">Limit washes to 2-3 times per week. Use a mild, sulfate-free, paraben-free, pH-balanced shampoo. Focus shampoo application only on the scalp and let the lather wash down lengths. Always rinse with lukewarm or cold water to lock cuticles.</p>
+                    </div>
+
+                    <!-- Healthy Diet -->
+                    <div class="glass-luxury-container" style="padding: 30px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <span style="font-size: 24px;">🥗</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: #F4E6C1; margin: 0;">Healthy Diet Tips</h3>
+                        </div>
+                        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.6;">Prioritize clean, sulfur-rich proteins (lentils, walnuts, pumpkin seeds, almonds). Ensure stable intake of spinach, iron-rich leafy greens, and citrus fruits packed with Vitamin C to assist direct collagen production and iron absorption.</p>
+                    </div>
+
+                    <!-- Lifestyle and Stress -->
+                    <div class="glass-luxury-container" style="padding: 30px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <span style="font-size: 24px;">🧘‍♂️</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: #F4E6C1; margin: 0;">Lifestyle & Stress Care</h3>
+                        </div>
+                        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.6;">Drink 2.5 to 3 liters of water daily. Integrate proven stress management tools like daily deep breathing, mindfulness, or yogic breathing (Anulom Vilom) since elevated cortisol blocks hair-follicle growth cycles.</p>
+                    </div>
+                </div>
+
+                <!-- Mistakes to Avoid (Full Width) -->
+                <div class="glass-luxury-container" style="padding: 35px; background: rgba(212, 175, 55, 0.03); border: 1px dashed rgba(212, 175, 55, 0.25); border-radius: 20px; margin-bottom: 50px;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #F4E6C1; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <span style="color: #D4AF37;">⚠️</span> Common Hair Care Mistakes to Avoid
+                    </h3>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.85); line-height: 1.6;">
+                        <li style="display: flex; gap: 10px; align-items: flex-start;"><strong style="color: #D4AF37;">•</strong> <span>Washing with hot water (strips natural scalp oils and leaves hair dry and brittle).</span></li>
+                        <li style="display: flex; gap: 10px; align-items: flex-start;"><strong style="color: #D4AF37;">•</strong> <span>Sleeping with damp or wet hair (causes hair shaft swelling and leads to micro-breakage).</span></li>
+                        <li style="display: flex; gap: 10px; align-items: flex-start;"><strong style="color: #D4AF37;">•</strong> <span>Aggressive towel drying (roughens cuticles, leading to split ends and immediate hair breakage).</span></li>
+                    </ul>
+                </div>
+
+                <!-- Action Button -->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <button onclick="downloadHairCareGuide()" class="btn-premium" style="padding: 16px 40px; font-size: 14px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 12px; cursor: pointer; border: none; background: linear-gradient(135deg, #AA8226 0%, #D4AF37 100%); color: #05140F; display: inline-flex; align-items: center; gap: 10px;">
+                        📥 Download Hair Care Guide (PDF)
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: WEEKLY PLANNER -->
+    <div id="page-hair-care-planner" class="page-container">
+        <section class="py-16 px-4" style="background: linear-gradient(180deg, #05140F 0%, #0B2F24 50%, #05140F 100%); min-height: 80vh;">
+            <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 20px;">
+                <!-- Back Button -->
+                <button onclick="switchTab('page-order')" class="btn-outline-luxury" style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; padding: 10px 20px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.3); color: #F4E6C1; border-radius: 6px; cursor: pointer;">
+                    ← Back to Order Page
+                </button>
+
+                <div class="text-center" style="margin-bottom: 50px;">
+                    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 15px;">7-Day Wellness Calendar</span>
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; color: #F4E6C1; margin-bottom: 12px;">Weekly Hair Care Plan</h2>
+                    <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: rgba(248, 247, 243, 0.7); max-width: 600px; margin: 0 auto; line-height: 1.6;">Accelerate follicle growth and reinforce hair structure with our systematic 7-day science-backed wellness schedule.</p>
+                </div>
+
+                <!-- 7 Day Planner Grid -->
+                <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 50px;">
+                    <!-- Monday -->
+                    <div class="glass-luxury-container" style="padding: 25px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; display: flex; flex-direction: column; md:flex-direction: row; gap: 20px; align-items: start;" class="flex flex-col md:flex-row">
+                        <div style="min-width: 150px;">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px;">Day 01</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #FFFFFF; margin: 0;">Monday</h3>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #F4E6C1; display: block; margin-bottom: 5px;">🌿 Oil Massage Routine</strong>
+                            <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.5; margin: 0;">Warm Aaranya Premium Botanical Hair Oil & massage directly into your scalp systematically for 10-15 minutes using slow, gentle pressure. Leave overnight to nourish follicles.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tuesday -->
+                    <div class="glass-luxury-container" style="padding: 25px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; display: flex; flex-direction: column; md:flex-direction: row; gap: 20px; align-items: start;" class="flex flex-col md:flex-row">
+                        <div style="min-width: 150px;">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px;">Day 02</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #FFFFFF; margin: 0;">Tuesday</h3>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #F4E6C1; display: block; margin-bottom: 5px;">🥗 Healthy Nutrition Protocol</strong>
+                            <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.5; margin: 0;">Incorporate high-quality proteins, walnuts, sprouts, almonds, & biotin-rich raw seeds into your meals. Stay fully hydrated by drinking 3 liters of water.</p>
+                        </div>
+                    </div>
+
+                    <!-- Wednesday -->
+                    <div class="glass-luxury-container" style="padding: 25px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; display: flex; flex-direction: column; md:flex-direction: row; gap: 20px; align-items: start;" class="flex flex-col md:flex-row">
+                        <div style="min-width: 150px;">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px;">Day 03</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #FFFFFF; margin: 0;">Wednesday</h3>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #F4E6C1; display: block; margin-bottom: 5px;">💆 Dry Scalp Massage</strong>
+                            <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.5; margin: 0;">Perform a dry massage on your scalp using fingertip pads for 5 minutes. This enhances micro-circulation and keeps blood rushing to active follicles.</p>
+                        </div>
+                    </div>
+
+                    <!-- Thursday -->
+                    <div class="glass-luxury-container" style="padding: 25px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; display: flex; flex-direction: column; md:flex-direction: row; gap: 20px; align-items: start;" class="flex flex-col md:flex-row">
+                        <div style="min-width: 150px;">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px;">Day 04</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #FFFFFF; margin: 0;">Thursday</h3>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #F4E6C1; display: block; margin-bottom: 5px;">🧼 Hair Wash Day</strong>
+                            <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.5; margin: 0;">Cleanse thoroughly with a mild, sulfate-free shampoo. Rinse off using lukewarm water, finishing with a cold-water splash to protect hair shaft.</p>
+                        </div>
+                    </div>
+
+                    <!-- Friday -->
+                    <div class="glass-luxury-container" style="padding: 25px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; display: flex; flex-direction: column; md:flex-direction: row; gap: 20px; align-items: start;" class="flex flex-col md:flex-row">
+                        <div style="min-width: 150px;">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px;">Day 05</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #FFFFFF; margin: 0;">Friday</h3>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #F4E6C1; display: block; margin-bottom: 5px;">✨ Hair Serum Application</strong>
+                            <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.5; margin: 0;">Apply 1-2 drops of lightweight botanical serum to damp strands to lock in cuticular moisture and provide smooth, high-gloss shine.</p>
+                        </div>
+                    </div>
+
+                    <!-- Saturday -->
+                    <div class="glass-luxury-container" style="padding: 25px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; display: flex; flex-direction: column; md:flex-direction: row; gap: 20px; align-items: start;" class="flex flex-col md:flex-row">
+                        <div style="min-width: 150px;">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px;">Day 06</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #FFFFFF; margin: 0;">Saturday</h3>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #F4E6C1; display: block; margin-bottom: 5px;">🧘‍♀️ Relaxation & Stress Care</strong>
+                            <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.5; margin: 0;">Allocate 10-15 minutes for slow, focused deep breathing or meditation to keep systemic cortisol levels minimal and support cellular hair growth.</p>
+                        </div>
+                    </div>
+
+                    <!-- Sunday -->
+                    <div class="glass-luxury-container" style="padding: 25px; background: rgba(11, 47, 36, 0.4); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; display: flex; flex-direction: column; md:flex-direction: row; gap: 20px; align-items: start;" class="flex flex-col md:flex-row">
+                        <div style="min-width: 150px;">
+                            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px;">Day 07</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #FFFFFF; margin: 0;">Sunday</h3>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <strong style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #F4E6C1; display: block; margin-bottom: 5px;">🔄 Complete Wellness Routine</strong>
+                            <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: rgba(248, 247, 243, 0.8); line-height: 1.5; margin: 0;">Deep oiling session with warm Aaranya Hair Oil, followed by steam (warm towel wrap) for 5 minutes, followed by a clarifying, nourishing wash.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <button onclick="downloadWeeklyPlanner()" class="btn-premium" style="padding: 16px 40px; font-size: 14px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 12px; cursor: pointer; border: none; background: linear-gradient(135deg, #AA8226 0%, #D4AF37 100%); color: #05140F; display: inline-flex; align-items: center; gap: 10px;">
+                        📅 Download Weekly Planner (PDF)
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 14.5 OUR COMMITMENT PROMISE -->
+    <section id="aaranya-commitment-section" class="py-16 px-4" style="background: #05140F; border-top: 1.5px solid rgba(212, 175, 55, 0.2); border-bottom: 1.5px solid rgba(212, 175, 55, 0.2); padding: 80px 20px;">
+        <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; color: #D4AF37; letter-spacing: 0.25em; text-transform: uppercase; display: block; margin-bottom: 18px;">Our Commitment</span>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; color: #F4E6C1; margin-bottom: 30px; font-weight: 600; letter-spacing: 0.05em;">OUR COMMITMENT</h3>
+            
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: rgba(248, 247, 243, 0.85); line-height: 1.8; font-weight: 300; display: flex; flex-direction: column; gap: 22px; margin-bottom: 40px;">
+                <p style="margin: 0;">
+                    At <strong style="color: #FFFFFF; font-weight: 500;">AARANYA™</strong>, we are committed to supporting your complete Hair Wellness Journey with honesty, premium botanical ingredients and personalized guidance.
+                </p>
+                <p style="margin: 0;">
+                    Every individual is unique. Hair health and visible results may vary depending on genetics, nutrition, lifestyle, stress levels, hormonal balance and overall health.
+                </p>
+                <p style="margin: 0;">
+                    While no company can honestly guarantee identical results for everyone, we guarantee our sincere commitment to quality, continuous improvement, transparent communication and exceptional customer support.
+                </p>
+                <p style="color: #F4E6C1; font-weight: 400; font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; margin: 10px 0 0 0;">
+                    Your trust is our greatest responsibility.
+                </p>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.15em; text-transform: uppercase;">Rooted in Nature.</span>
+                <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; color: #D4AF37; letter-spacing: 0.15em; text-transform: uppercase;">Crafted for Confidence.</span>
+            </div>
+        </div>
+    </section>
 
     <!-- 15. FOOTER -->
     <footer>
@@ -7134,7 +7547,7 @@ Please confirm my order. Thank you!`;
                     <head>
                         <title>AARANYA™ AI Hair Wellness Report</title>
                         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
-                        <script src="https://cdn.tailwindcss.com"></script>
+                        <scr` + `ipt src="https://cdn.tailwindcss.com"></scr` + `ipt>
                         <style>
                             body {
                                 background: #05140F;
@@ -7159,12 +7572,12 @@ Please confirm my order. Thank you!`;
                         <div class="max-w-4xl mx-auto border border-[#D4AF37] border-opacity-30 p-8 rounded-3xl bg-[#092219]">
                             ${reportContent}
                         </div>
-                        <script>
+                        <scr` + `ipt>
                             window.onload = function() {
                                 window.print();
                                 setTimeout(function() { window.close(); }, 500);
                             };
-                        <\/script>
+                        </scr` + `ipt>
                     </body>
                     </html>
                 `);
@@ -7603,6 +8016,148 @@ Please confirm my order. Thank you!`;
             setTimeout(() => {
                 document.getElementById('success-message').style.display = 'none';
             }, 8000);
+        }
+
+        // Customer Support Form Handler
+        function submitSupportForm(event) {
+            event.preventDefault();
+            const successBanner = document.getElementById('success-message');
+            if (successBanner) {
+                successBanner.style.display = 'block';
+                successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            event.target.reset();
+            setTimeout(() => {
+                if (successBanner) {
+                    successBanner.style.display = 'none';
+                }
+            }, 8000);
+        }
+
+        // Scroll to Checkout Credentials Form
+        function scrollToCheckoutForm() {
+            switchTab('page-order');
+            setTimeout(() => {
+                const checkoutForm = document.getElementById('premium-checkout-form-box');
+                if (checkoutForm) {
+                    checkoutForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
+        }
+
+        // Print Hair Care Guide (PDF)
+        function downloadHairCareGuide() {
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) {
+                window.print();
+                return;
+            }
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>AARANYA™ Hair Care Guide</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
+                    <style>
+                        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FFF; color: #111; padding: 40px; }
+                        h1 { font-family: 'Playfair Display', serif; color: #0B2F24; text-align: center; border-bottom: 2px solid #D4AF37; padding-bottom: 10px; }
+                        h2 { font-family: 'Playfair Display', serif; color: #D4AF37; margin-top: 30px; }
+                        ul { line-height: 1.6; }
+                        li { margin-bottom: 8px; }
+                        .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #666; border-top: 1px solid #EEE; padding-top: 20px; }
+                    </style>
+                </head>
+                <body>
+                    <h1>AARANYA™ Hair Care Guide</h1>
+                    <h2>1. Morning Hair Routine</h2>
+                    <p>Gently detangle your hair using a seamless neem wood wide-tooth comb. Refresh the scalp with a lightweight hydration mist to activate follicles.</p>
+                    <h2>2. Night Hair Routine</h2>
+                    <p>Apply 2-3 drops of Aaranya Botanical Hair Oil to dry ends to lock in overnight moisture. Perform a soothing 3-minute fingertip massage. Use a silk or satin pillowcase to reduce hair friction.</p>
+                    <h2>3. Weekly Oil Massage</h2>
+                    <p>Warm 1-1.5 tablespoons of Aaranya Hair Oil. Apply systematically onto your scalp, massaging in slow circular motions. Leave for at least 45 minutes or overnight before washing.</p>
+                    <h2>4. Correct Hair Washing Method</h2>
+                    <p>Restrict shampoo washings to 2 or 3 times a week. Use a sulfate-free, paraben-free, and pH-balanced formula. Wash with lukewarm water and rinse with cold water to seal cuticles.</p>
+                    <h2>5. Healthy Diet Tips</h2>
+                    <p>Ensure adequate dietary protein (lentils, pumpkin seeds, walnuts). Consume iron-rich leafy greens, and citrus fruits for vitamin C.</p>
+                    <h2>6. Lifestyle Tips</h2>
+                    <p>Drink 2.5 to 3 liters of water daily. Practice deep breathing exercises to manage stress and control cortisol levels.</p>
+                    <h2>7. Hair Care Mistakes to Avoid</h2>
+                    <p>Avoid washing with hot water, sleeping with wet hair, and aggressive towel drying. Never brush wet hair directly from the roots.</p>
+                    <div class="footer">
+                        &copy; 2026 AARANYA™ Premium Cosmetics. All Rights Reserved.
+                    </div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Print Weekly Planner (PDF)
+        function downloadWeeklyPlanner() {
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) {
+                window.print();
+                return;
+            }
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>AARANYA™ 7-Day Hair Wellness Planner</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
+                    <style>
+                        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FFF; color: #111; padding: 40px; }
+                        h1 { font-family: 'Playfair Display', serif; color: #0B2F24; text-align: center; border-bottom: 2px solid #D4AF37; padding-bottom: 10px; }
+                        .day-card { border: 1px solid #EEE; border-left: 4px solid #D4AF37; padding: 15px; margin-bottom: 15px; border-radius: 6px; }
+                        .day-name { font-family: 'Playfair Display', serif; font-size: 18px; color: #0B2F24; font-weight: bold; margin-bottom: 5px; }
+                        .day-action { font-weight: 600; color: #AA8226; margin-bottom: 5px; }
+                        .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #666; border-top: 1px solid #EEE; padding-top: 20px; }
+                    </style>
+                </head>
+                <body>
+                    <h1>AARANYA™ 7-Day Hair Wellness Planner</h1>
+                    <div class="day-card">
+                        <div class="day-name">Monday</div>
+                        <div class="day-action">Oil Massage</div>
+                        <p>Deep scalp massage with warm Aaranya Hair Oil for 10-15 minutes to stimulate hair roots. Leave overnight.</p>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-name">Tuesday</div>
+                        <div class="day-action">Healthy Nutrition</div>
+                        <p>Focus on sulfur-rich amino acids, walnuts, sprouts, pumpkin seeds, and stay fully hydrated (3L water).</p>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-name">Wednesday</div>
+                        <div class="day-action">Scalp Massage</div>
+                        <p>Perform a gentle 5-minute dry scalp massage using fingertip pads to improve micro-circulation.</p>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-name">Thursday</div>
+                        <div class="day-action">Hair Wash</div>
+                        <p>Cleanse with a mild, sulfate-free Aaranya shampoo using lukewarm water and a cold water finish.</p>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-name">Friday</div>
+                        <div class="day-action">Hair Serum</div>
+                        <p>Apply lightweight serum on damp hair strands to seal hair cuticles, lock in moisture and elevate shine.</p>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-name">Saturday</div>
+                        <div class="day-action">Relaxation & Stress Care</div>
+                        <p>Take 10-15 minutes for meditation, yoga, or deep breathing to decrease systemic stress levels.</p>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-name">Sunday</div>
+                        <div class="day-action">Complete Hair Wellness Routine</div>
+                        <p>Deep oiling and scalp massage, followed by a warm towel steam wrap, finishing with a nourishing wash.</p>
+                    </div>
+                    <div class="footer">
+                        &copy; 2026 AARANYA™ Premium Cosmetics. All Rights Reserved.
+                    </div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
         }
 
         // Document Vault Mock Download Handler
