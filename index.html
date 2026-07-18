@@ -5169,129 +5169,859 @@
 
     <!-- PAGE 5: ORDER (D2C LUXURY ORDERING SYSTEM AND CHECKOUT DOCK) -->
     <div id="page-order" class="page-container">
-        <section style="padding: 100px 0; background: var(--cream);">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Direct to Consumer</span>
-                    <h2 class="section-title">Secure <span>Checkout Portal</span></h2>
-                    <p class="section-desc">Acquire your 100ml bottle of AARANYA™ Premium Botanical Hair Oil at our exclusive limited-time launch price of ₹699.</p>
-                </div>
+        <style>
+            #page-order {
+                background: linear-gradient(180deg, #05140F 0%, #0B2F24 50%, #05140F 100%);
+                color: #F8F7F3;
+                font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+                overflow-x: hidden;
+                position: relative;
+            }
 
-                <div id="order-success-banner" style="display: none; background: rgba(18,60,45,0.05); border: 2.5px solid var(--gold); border-radius: 12px; padding: 40px; text-align: center; max-width: 700px; margin: 0 auto 40px auto; box-shadow: 0 15px 35px rgba(11,47,36,0.03);">
-                    <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--gold); color: var(--forest-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto; font-size: 28px; font-weight: bold; box-shadow: 0 0 20px rgba(212,175,55,0.4);">✓</div>
-                    <h3 class="brand-font" style="font-size: 32px; color: var(--forest); margin-bottom: 12px;">Order Placed Successfully!</h3>
-                    <p style="font-size: 16px; color: rgba(11,47,36,0.85); margin-bottom: 24px; font-weight: 300;">Your reservation is secured. Your unique transaction token is <strong id="success-order-id" style="color: var(--gold-dark); font-family: var(--font-mono);">AAR-9831-294</strong>. A shipping specialist will contact you with your trackable tracking link.</p>
-                    <button onclick="switchTab('page-home')" class="btn btn-gold" style="display: inline-flex; margin: 0 auto;">Continue Browsing</button>
-                </div>
+            /* Custom Premium Classes scoped to Page 5 */
+            .luxury-glow-text {
+                color: transparent;
+                background-clip: text;
+                -webkit-background-clip: text;
+                background-image: linear-gradient(135deg, #F4E6C1 0%, #D4AF37 50%, #AA8226 100%);
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            }
 
-                <div class="order-container-grid" id="checkout-form-wrapper">
-                    <!-- Left Column: Checkout Shipping Form -->
-                    <div class="checkout-box">
-                        <h4 class="brand-font" style="font-size: 24px; color: var(--forest); margin-bottom: 24px; border-bottom: 1px solid rgba(11,47,36,0.06); padding-bottom: 12px;">Shipping Address</h4>
+            .gold-border-luxury {
+                border: 1px solid rgba(212, 175, 55, 0.25);
+            }
+
+            .gold-border-luxury:hover {
+                border-color: rgba(212, 175, 55, 0.6);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            }
+
+            .glass-luxury-container {
+                background: rgba(11, 47, 36, 0.45);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+                border-radius: 24px;
+                box-shadow: 0 30px 60px rgba(5, 20, 15, 0.4);
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .glass-luxury-container:hover {
+                border-color: rgba(212, 175, 55, 0.35);
+                box-shadow: 0 40px 80px rgba(212, 175, 55, 0.05);
+            }
+
+            .gold-luxury-card {
+                background: linear-gradient(135deg, #AA8226 0%, #D4AF37 50%, #F4E6C1 100%);
+                border-radius: 20px;
+                box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+                color: #05140F;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .gold-luxury-card::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+                pointer-events: none;
+            }
+
+            .btn-luxury-action {
+                background: linear-gradient(135deg, #AA8226 0%, #D4AF37 50%, #F4E6C1 100%);
+                color: #05140F;
+                font-weight: 700;
+                font-family: 'Space Grotesk', sans-serif;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                border-radius: 12px;
+                padding: 16px 32px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+            }
+
+            .btn-luxury-action:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+            }
+
+            .btn-whatsapp-luxury {
+                background: #25D366;
+                color: #FFFFFF;
+                font-weight: 700;
+                font-family: 'Space Grotesk', sans-serif;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                border-radius: 12px;
+                padding: 16px 32px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: 0 10px 25px rgba(37, 211, 98, 0.2);
+            }
+
+            .btn-whatsapp-luxury:hover {
+                background: #20BA5A;
+                transform: translateY(-2px);
+                box-shadow: 0 15px 35px rgba(37, 211, 98, 0.4);
+            }
+
+            .btn-outline-luxury {
+                border: 1px solid rgba(212, 175, 55, 0.3);
+                color: #F4E6C1;
+                background: rgba(255,255,255,0.02);
+                font-weight: 600;
+                font-family: 'Space Grotesk', sans-serif;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                border-radius: 12px;
+                padding: 16px 32px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .btn-outline-luxury:hover {
+                border-color: #D4AF37;
+                background: rgba(212, 175, 55, 0.05);
+                color: #FFFFFF;
+                transform: translateY(-2px);
+            }
+
+            .input-luxury {
+                background: rgba(5, 20, 15, 0.6);
+                border: 1.5px solid rgba(212, 175, 55, 0.2);
+                color: #FFFFFF;
+                border-radius: 12px;
+                padding: 14px 18px;
+                width: 100%;
+                transition: all 0.3s ease;
+                outline: none;
+                font-size: 15px;
+            }
+
+            .input-luxury:focus {
+                border-color: #D4AF37;
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+                background: rgba(5, 20, 15, 0.85);
+            }
+
+            .label-luxury {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 12px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: #F4E6C1;
+                margin-bottom: 8px;
+                display: block;
+                font-weight: 500;
+            }
+
+            .payment-luxury-pill {
+                background: rgba(5, 20, 15, 0.4);
+                border: 1.5px solid rgba(212, 175, 55, 0.15);
+                border-radius: 12px;
+                padding: 14px 18px;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .payment-luxury-pill.active {
+                background: rgba(212, 175, 55, 0.1);
+                border-color: #D4AF37;
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+            }
+
+            .check-outer {
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                border: 1.5px solid rgba(212, 175, 55, 0.4);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+            }
+
+            .payment-luxury-pill.active .check-outer {
+                border-color: #D4AF37;
+                background: #D4AF37;
+            }
+
+            .check-inner {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #05140F;
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+
+            .payment-luxury-pill.active .check-inner {
+                opacity: 1;
+            }
+
+            .why-luxury-card {
+                background: rgba(11, 47, 36, 0.35);
+                border: 1.5px solid rgba(212, 175, 55, 0.15);
+                border-radius: 16px;
+                padding: 24px;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .why-luxury-card:hover {
+                border-color: #D4AF37;
+                transform: translateY(-4px);
+                box-shadow: 0 15px 30px rgba(212, 175, 55, 0.08);
+            }
+
+            /* Custom Animation */
+            @keyframes shinySweep {
+                0% { left: -60%; }
+                100% { left: 130%; }
+            }
+
+            .sweep-animation::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -60%;
+                width: 30%;
+                height: 200%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: rotate(30deg);
+                opacity: 0.15;
+            }
+
+            .sweep-animation:hover::after {
+                animation: shinySweep 0.8s ease-in-out forwards;
+            }
+        </style>
+
+        <!-- PAGE HEADER / TITLE SECTION -->
+        <section style="padding: 120px 24px 60px 24px; text-align: center; background: radial-gradient(circle at center, rgba(18, 60, 45, 0.4) 0%, transparent 70%);">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #D4AF37; display: block; margin-bottom: 15px;">Premium Hair Transformation System</span>
+                <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 6vw, 54px); font-weight: 600; line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.01em;">
+                    Order <span class="luxury-glow-text">AARANYA™</span>
+                </h1>
+                <p style="font-size: clamp(16px, 2.5vw, 19px); color: rgba(248, 247, 243, 0.85); font-weight: 300; line-height: 1.6; max-width: 650px; margin: 0 auto;">
+                    Experience Nature's Finest Hair Care with Science-Backed Botanical Ingredients.
+                </p>
+                <div style="width: 80px; height: 1.5px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); margin: 35px auto 0 auto;"></div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE NOTIFICATIONS/MODALS CONTAINER -->
+        <div id="luxury-notification-banner" style="display: none; position: fixed; top: 100px; left: 50%; transform: translateX(-50%); z-index: 9999; max-width: 500px; width: 90%;" class="glass-luxury-container">
+            <div style="padding: 24px; text-align: center; background: rgba(5, 20, 15, 0.9); border-radius: 24px;">
+                <div id="notif-icon-box" style="width: 50px; height: 50px; border-radius: 50%; background: #D4AF37; color: #05140F; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; font-size: 22px; font-weight: bold; box-shadow: 0 0 15px rgba(212,175,55,0.4);">✓</div>
+                <h3 class="brand-font" id="notif-title" style="font-size: 22px; color: #D4AF37; margin-bottom: 8px;">Success</h3>
+                <p id="notif-message" style="font-size: 14.5px; color: rgba(248, 247, 243, 0.9); font-weight: 300; line-height: 1.5; margin-bottom: 20px;"></p>
+                <button onclick="closeLuxuryNotification()" class="btn-luxury-action" style="padding: 10px 24px; font-size: 12px;">Understood</button>
+            </div>
+        </div>
+
+        <!-- MAIN LAYOUT CONTAINER -->
+        <div class="container" style="padding-bottom: 120px;">
+            <div style="display: grid; grid-template-columns: 1fr; lg:grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: start;" id="checkout-grid-container">
+                
+                <!-- LEFT COLUMN: LUXURY PRODUCT SHOWCASE & DETAILS -->
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    
+                    <!-- PRODUCT IMAGES & PRESENTATION -->
+                    <div class="glass-luxury-container" style="padding: 30px; position: relative; overflow: hidden;">
+                        <!-- Absolute Luxury Accent Badge -->
+                        <div style="position: absolute; top: 20px; right: 20px; background: rgba(212,175,55,0.15); border: 1px solid #D4AF37; border-radius: 40px; padding: 6px 16px; font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; color: #F4E6C1; letter-spacing: 0.1em; text-transform: uppercase; z-index: 2;">
+                            Flagship formulation
+                        </div>
                         
-                        <form onsubmit="placeConsumerOrder(event)">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="o-name">Full Name</label>
-                                    <input type="text" id="o-name" class="form-control" required placeholder="eg. Priyanka Patel">
-                                </div>
-                                <div class="form-group">
-                                    <label for="o-phone">Contact Mobile</label>
-                                    <input type="tel" id="o-phone" class="form-control" required placeholder="eg. +91 98765 43210">
-                                </div>
-                            </div>
+                        <div style="text-align: center; margin-bottom: 30px; position: relative;">
+                            <!-- Glowing Background Aura -->
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 280px; height: 280px; background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%); filter: blur(20px); pointer-events: none;"></div>
                             
-                            <div class="form-group">
-                                <label for="o-email">Email Address</label>
-                                <input type="email" id="o-email" class="form-control" required placeholder="eg. priyanka@gmail.com">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="o-address">Delivery Address</label>
-                                <input type="text" id="o-address" class="form-control" required placeholder="Apartment, suite, block, street address...">
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="o-pin">PIN Code</label>
-                                    <input type="text" id="o-pin" class="form-control" required placeholder="eg. 400001" pattern="[0-9]{6}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="o-state">State</label>
-                                    <input type="text" id="o-state" class="form-control" required placeholder="eg. Maharashtra">
-                                </div>
-                                <div class="form-group">
-                                    <label for="o-city">City</label>
-                                    <input type="text" id="o-city" class="form-control" required placeholder="eg. Mumbai">
-                                </div>
-                            </div>
-
-                            <div style="margin-top: 30px; padding: 16px; background: rgba(212,175,55,0.05); border: 1px dashed var(--gold); border-radius: 6px; font-size: 13.5px; color: var(--forest-light); line-height: 1.5;">
-                                <strong style="color: var(--gold-dark);">Payment Method:</strong> Cash on Delivery (COD) & online UPI options available upon delivery. We prioritize secure packaging and contactless shipping.
-                            </div>
-
-                            <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 30px; justify-content: center;">Complete Purchase (Secure Checkout)</button>
-                        </form>
-                    </div>
-
-                    <!-- Right Column: Premium Order Summary Card -->
-                    <div class="order-summary-box">
-                        <h4>Your Selection</h4>
+                            <!-- Large Bottle Image -->
+                            <img src="aaranya_hair_oil.jpg" alt="AARANYA™ Premium Botanical Hair Oil Bottle" style="width: 100%; max-width: 320px; height: auto; border-radius: 16px; border: 1.5px solid rgba(212, 175, 55, 0.35); box-shadow: 0 25px 50px rgba(5, 20, 15, 0.5); object-fit: cover; margin: 0 auto; display: block; transition: all 0.5s ease;" class="hover:scale-105" id="premium-product-img" referrerPolicy="no-referrer">
+                        </div>
                         
-                        <!-- Mini Product Card -->
-                        <div style="display: flex; gap: 15px; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
-                            <img src="aaranya_hair_oil.jpg" alt="Aaranya oil bottle summary" style="width: 70px; height: 70px; border-radius: 6px; object-fit: cover; border: 1px solid var(--gold);" referrerPolicy="no-referrer">
-                            <div>
-                                <h5 class="brand-font" style="font-size: 18px; color: var(--gold-light); margin: 0 0 4px 0;">AARANYA™ Premium Oil</h5>
-                                <span style="font-size: 12px; color: rgba(255,255,255,0.6); display: block; margin-bottom: 8px;">100 ml e | Botanical Transformation</span>
-                                <span style="font-family: var(--font-mono); font-size: 14px; color: var(--gold); font-weight: bold;">₹699</span>
+                        <!-- Botanical Details Table -->
+                        <div style="border-top: 1px solid rgba(212, 175, 55, 0.15); padding-top: 25px;">
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #F4E6C1; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 20px;">✧</span> Specifications & Details
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 14px;">
+                                <div style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+                                    <span style="color: rgba(248, 247, 243, 0.55); font-size: 11px; text-transform: uppercase; font-family: 'Space Grotesk', sans-serif;">Product Name</span>
+                                    <p style="color: #FFFFFF; font-weight: 500; margin-top: 2px;">AARANYA™ Premium Botanical Hair Oil</p>
+                                </div>
+                                <div style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+                                    <span style="color: rgba(248, 247, 243, 0.55); font-size: 11px; text-transform: uppercase; font-family: 'Space Grotesk', sans-serif;">Category</span>
+                                    <p style="color: #FFFFFF; font-weight: 500; margin-top: 2px;">Premium Hair Transformation Oil</p>
+                                </div>
+                                <div style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+                                    <span style="color: rgba(248, 247, 243, 0.55); font-size: 11px; text-transform: uppercase; font-family: 'Space Grotesk', sans-serif;">Quantity</span>
+                                    <p style="color: #FFFFFF; font-weight: 500; margin-top: 2px;">100 ml e</p>
+                                </div>
+                                <div style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+                                    <span style="color: rgba(248, 247, 243, 0.55); font-size: 11px; text-transform: uppercase; font-family: 'Space Grotesk', sans-serif;">Suitable For</span>
+                                    <p style="color: #FFFFFF; font-weight: 500; margin-top: 2px;">Men & Women</p>
+                                </div>
+                                <div style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+                                    <span style="color: rgba(248, 247, 243, 0.55); font-size: 11px; text-transform: uppercase; font-family: 'Space Grotesk', sans-serif;">Hair Type</span>
+                                    <p style="color: #FFFFFF; font-weight: 500; margin-top: 2px;">All Hair Types</p>
+                                </div>
+                                <div style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+                                    <span style="color: rgba(248, 247, 243, 0.55); font-size: 11px; text-transform: uppercase; font-family: 'Space Grotesk', sans-serif;">Made In</span>
+                                    <p style="color: #FFFFFF; font-weight: 500; margin-top: 2px;">India</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Quantity and dynamic calculation -->
-                        <div class="form-group" style="margin-bottom: 24px;">
-                            <label style="color: rgba(255,255,255,0.7); font-size: 12px; text-transform: uppercase;">Bottle Quantity</label>
-                            <select id="bottle-qty" class="form-control" style="background: rgba(255,255,255,0.05); border-color: rgba(212,175,55,0.3); color: var(--cream);" onchange="updateTotalCheckoutPrice()">
+                    <!-- WHAT'S INCLUDED IN THE BOX -->
+                    <div class="glass-luxury-container" style="padding: 30px;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #F4E6C1; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 20px;">✦</span> What's Included in the System
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                                <div style="color: #D4AF37; font-size: 18px;">🌿</div>
+                                <div>
+                                    <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Premium Botanical Hair Oil</strong>
+                                    <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">100ml formulation with clinical grade Ayurvedic extracts.</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                                <div style="color: #D4AF37; font-size: 18px;">📖</div>
+                                <div>
+                                    <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Hair Care Guide</strong>
+                                    <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Comprehensive handbook to accelerate your hair transformation journey.</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                                <div style="color: #D4AF37; font-size: 18px;">📅</div>
+                                <div>
+                                    <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Weekly Hair Care Plan</strong>
+                                    <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Curated calendar to maximize follicle stimulation.</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                                <div style="color: #D4AF37; font-size: 18px;">💻</div>
+                                <div>
+                                    <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Free AI Hair Analysis</strong>
+                                    <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Complimentary scan access with real-time bio-metric tracking.</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid #D4AF37;">
+                                <div style="color: #D4AF37; font-size: 18px;">📞</div>
+                                <div>
+                                    <strong style="color: #FFFFFF; font-size: 14.5px; display: block;">Customer Support</strong>
+                                    <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Dedicated botanical specialist helpline for active routine monitoring.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN: PRICING & ORDER CHECKOUT FORM -->
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    
+                    <!-- PRICING & QUANTITY SELECTOR (LUXURY GOLD CARD) -->
+                    <div class="gold-luxury-card" style="padding: 35px;">
+                        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #05140F; display: block; opacity: 0.8; margin-bottom: 12px;">Exclusive Launch Special</span>
+                        
+                        <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 20px;">
+                            <span style="font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 700; line-height: 1;" id="luxury-total-price">₹699</span>
+                            <div style="display: flex; flex-direction: column;">
+                                <span style="text-decoration: line-through; opacity: 0.6; font-size: 16px; font-weight: 500;" id="luxury-mrp-price">₹999</span>
+                                <span style="font-size: 13px; font-weight: 700; background: #05140F; color: #D4AF37; padding: 2px 8px; border-radius: 4px; margin-top: 4px;" id="luxury-savings-badge">SAVE ₹300</span>
+                            </div>
+                        </div>
+                        
+                        <p style="font-size: 14px; color: #05140F; line-height: 1.5; margin-bottom: 30px; font-weight: 400; border-top: 1px solid rgba(5,20,15,0.15); padding-top: 20px;">
+                            This special pricing is limited to current stock batches. Secure your order now to lock in the national launch discount.
+                        </p>
+
+                        <!-- Quantity Selector inside pricing card -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(5, 20, 15, 0.08); border-radius: 12px; padding: 12px 20px; border: 1px solid rgba(5, 20, 15, 0.15);">
+                            <div>
+                                <strong style="font-size: 13.5px; font-family: 'Space Grotesk', sans-serif; color: #05140F; text-transform: uppercase; letter-spacing: 0.05em; display: block;">Select Quantity</strong>
+                                <span style="font-size: 12px; color: rgba(5, 20, 15, 0.7);" id="luxury-savings-price-desc">You are saving <span id="luxury-savings-price" style="font-weight: 600;">₹300</span></span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <button type="button" onclick="changeQuantityCount(-1)" style="width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid #05140F; background: transparent; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" class="hover:bg-forest-dark hover:text-white">-</button>
+                                <span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; min-width: 24px; text-align: center; color: #05140F;" id="luxury-qty-val">1</span>
+                                <button type="button" onclick="changeQuantityCount(1)" style="width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid #05140F; background: transparent; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" class="hover:bg-forest-dark hover:text-white">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ORDER SHIPPING FORM (GLASS LUXURY CARD) -->
+                    <div class="glass-luxury-container" style="padding: 35px;" id="premium-checkout-form-box">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: #F4E6C1; margin-bottom: 24px; border-bottom: 1px solid rgba(212, 175, 55, 0.15); padding-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <span>✧</span> Delivery Credentials
+                        </h3>
+                        
+                        <form id="luxury-checkout-form" onsubmit="handlePremiumFormSubmit(event)" style="display: flex; flex-direction: column; gap: 20px;">
+                            <!-- Hidden Select input to ensure compatibility with global update functions -->
+                            <select id="bottle-qty" style="display: none;" onchange="updateTotalCheckoutPrice()">
                                 <option value="1" selected>1 Bottle (Launch Special) - ₹699</option>
                                 <option value="2">2 Bottles (Extended Cycle) - ₹1398</option>
                                 <option value="3">3 Bottles (Family Pack) - ₹2097</option>
                                 <option value="4">4 Bottles (Professional) - ₹2796</option>
                                 <option value="5">5 Bottles (Distributor Base) - ₹3495</option>
+                                <option value="6">6 Bottles - ₹4194</option>
+                                <option value="7">7 Bottles - ₹4893</option>
+                                <option value="8">8 Bottles - ₹5592</option>
+                                <option value="9">9 Bottles - ₹6291</option>
+                                <option value="10">10 Bottles - ₹6990</option>
                             </select>
-                        </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr; sm:grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div>
+                                    <label class="label-luxury" for="o-name-prem">Full Name</label>
+                                    <input type="text" id="o-name-prem" class="input-luxury" required placeholder="eg. Priyanka Patel">
+                                </div>
+                                <div>
+                                    <label class="label-luxury" for="o-phone-prem">Mobile Number</label>
+                                    <input type="tel" id="o-phone-prem" class="input-luxury" required placeholder="eg. +91 8077960042">
+                                </div>
+                            </div>
 
-                        <!-- Calculations Grid -->
-                        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 14px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; color: rgba(255,255,255,0.7);">
-                                <span>Subtotal</span>
-                                <span id="summary-subtotal" style="font-family: var(--font-mono); font-weight: bold; color: var(--cream);">₹699.00</span>
+                            <div style="display: grid; grid-template-columns: 1fr; sm:grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div>
+                                    <label class="label-luxury" for="o-whatsapp-prem">WhatsApp Number</label>
+                                    <input type="tel" id="o-whatsapp-prem" class="input-luxury" required placeholder="eg. +91 8077960042">
+                                </div>
+                                <div>
+                                    <label class="label-luxury" for="o-email-prem">Email Address</label>
+                                    <input type="email" id="o-email-prem" class="input-luxury" required placeholder="eg. priyanka@gmail.com">
+                                </div>
                             </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; color: rgba(255,255,255,0.7);">
-                                <span>Premium Insured Shipping</span>
-                                <span style="color: var(--gold); text-transform: uppercase; font-size: 11px; font-weight: bold; letter-spacing: 0.1em;">FREE</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 24px; color: rgba(255,255,255,0.7);">
-                                <span>GST / Taxes</span>
-                                <span style="font-family: var(--font-mono); font-weight: bold; color: var(--cream);">₹0.00 (Inclusive)</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 16px; font-size: 18px; color: var(--white);">
-                                <span class="brand-font">Grand Total</span>
-                                <span id="summary-grand-total" style="font-family: var(--font-mono); font-weight: bold; color: var(--gold-light);">₹699.00</span>
-                            </div>
-                        </div>
 
-                        <!-- Trust Seal -->
-                        <div style="margin-top: 30px; display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 12px; color: rgba(255,255,255,0.5);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--gold);">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                            <span>SECURE 256-BIT SSL TRANSACTION DEPLOYMENT ENCRYPTED</span>
+                            <div>
+                                <label class="label-luxury" for="o-address-prem">Complete Delivery Address</label>
+                                <input type="text" id="o-address-prem" class="input-luxury" required placeholder="Apartment, suite, block, street address...">
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr; sm:grid-template-columns: 1fr 1fr 1.2fr; gap: 15px;">
+                                <div>
+                                    <label class="label-luxury" for="o-city-prem">City</label>
+                                    <input type="text" id="o-city-prem" class="input-luxury" required placeholder="eg. Mumbai">
+                                </div>
+                                <div>
+                                    <label class="label-luxury" for="o-state-prem">State</label>
+                                    <input type="text" id="o-state-prem" class="input-luxury" required placeholder="eg. Maharashtra">
+                                </div>
+                                <div>
+                                    <label class="label-luxury" for="o-pin-prem">PIN Code</label>
+                                    <input type="text" id="o-pin-prem" class="input-luxury" required placeholder="6-digit PIN" pattern="[0-9]{6}">
+                                </div>
+                            </div>
+
+                            <div style="border-top: 1px solid rgba(212, 175, 55, 0.15); padding-top: 20px; margin-top: 10px;">
+                                <label class="label-luxury" style="margin-bottom: 12px;">Preferred Payment Method</label>
+                                <input type="hidden" id="o-payment-prem" value="COD">
+                                
+                                <div style="display: flex; flex-direction: column; gap: 10px;">
+                                    <div class="payment-luxury-pill active" onclick="selectPaymentMethod('COD', this)">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-size: 18px;">💵</span>
+                                            <span style="font-size: 14.5px; font-weight: 500; color: #FFFFFF;">Cash on Delivery (COD)</span>
+                                        </div>
+                                        <div class="check-outer"><div class="check-inner"></div></div>
+                                    </div>
+                                    
+                                    <div class="payment-luxury-pill" onclick="selectPaymentMethod('UPI', this)">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-size: 18px;">📱</span>
+                                            <span style="font-size: 14.5px; font-weight: 500; color: #FFFFFF;">UPI (Instant 5% Off)</span>
+                                        </div>
+                                        <div class="check-outer"><div class="check-inner"></div></div>
+                                    </div>
+
+                                    <div class="payment-luxury-pill" onclick="selectPaymentMethod('CC', this)">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-size: 18px;">💳</span>
+                                            <span style="font-size: 14.5px; font-weight: 500; color: #FFFFFF;">Credit Card</span>
+                                        </div>
+                                        <div class="check-outer"><div class="check-inner"></div></div>
+                                    </div>
+
+                                    <div class="payment-luxury-pill" onclick="selectPaymentMethod('DC', this)">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-size: 18px;">📇</span>
+                                            <span style="font-size: 14.5px; font-weight: 500; color: #FFFFFF;">Debit Card</span>
+                                        </div>
+                                        <div class="check-outer"><div class="check-inner"></div></div>
+                                    </div>
+
+                                    <div class="payment-luxury-pill" onclick="selectPaymentMethod('NB', this)">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-size: 18px;">🏦</span>
+                                            <span style="font-size: 14.5px; font-weight: 500; color: #FFFFFF;">Net Banking</span>
+                                        </div>
+                                        <div class="check-outer"><div class="check-inner"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="padding: 15px; background: rgba(212,175,55,0.05); border: 1.5px dashed rgba(212,175,55,0.25); border-radius: 12px; font-size: 13.5px; color: #F4E6C1; line-height: 1.5; margin-top: 10px;">
+                                <strong style="color: #FFFFFF;">Luxury Order Summary:</strong>
+                                <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 13px; color: rgba(248, 247, 243, 0.7);">
+                                    <span>Premium Hair Oil (<span id="luxury-summary-qty">1x</span>)</span>
+                                    <span id="luxury-summary-subtotal" style="font-family: var(--font-mono); color: #FFFFFF;">₹699.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 13px; color: rgba(248, 247, 243, 0.7); margin-top: 4px;">
+                                    <span>Premium Insured Delivery</span>
+                                    <span style="color: #D4AF37; font-weight: bold;">FREE</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 15px; color: #FFFFFF; font-weight: bold; border-top: 1px dashed rgba(212,175,55,0.2); margin-top: 8px; padding-top: 8px;">
+                                    <span>Grand Total</span>
+                                    <span id="luxury-summary-grandtotal" style="color: #D4AF37;">₹699.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Form Validation Checkbox -->
+                            <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 5px;">
+                                <input type="checkbox" id="privacy-agree" required style="width: 18px; height: 18px; accent-color: #D4AF37; margin-top: 2px; cursor: pointer;">
+                                <label for="privacy-agree" style="font-size: 13px; color: rgba(248,247,243,0.7); cursor: pointer; line-height: 1.45;">
+                                    I agree to the AARANYA™ <a href="#" style="color: #D4AF37; text-decoration: underline;">Privacy Policy</a>.
+                                </label>
+                            </div>
+
+                            <!-- ORDER ACTION BUTTONS -->
+                            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                                <button type="submit" class="btn-luxury-action sweep-animation" style="width: 100%; position: relative;">
+                                    <span>🛒</span> Buy Now (Secure Checkout)
+                                </button>
+                                
+                                <button type="button" onclick="orderOnWhatsApp()" class="btn-whatsapp-luxury" style="width: 100%;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle;">
+                                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.665.989 3.3 1.487 5.366 1.488 5.4 0 9.792-4.385 9.795-9.782.002-2.614-1.012-5.071-2.859-6.92C17.063 2.091 14.61 1.077 12.008 1.077c-5.4 0-9.793 4.386-9.796 9.783-.001 2.095.553 4.14 1.602 5.922l-.986 3.6 3.819-.988zm11.233-7.234c-.311-.156-1.839-.908-2.119-1.01-.28-.101-.485-.152-.687.152-.202.303-.783 1.01-.96 1.212-.177.202-.354.228-.665.072-3.033-1.514-4.385-2.678-5.353-4.34-.258-.444.258-.413.738-1.374.08-.163.04-.304-.02-.43-.06-.126-.485-1.17-.665-1.602-.175-.42-.35-.363-.48-.363h-.41c-.14 0-.368.053-.56.262-.19.21-.73.714-.73 1.74 0 1.025.75 2.017.85 2.155.106.14 1.47 2.247 3.565 3.148 1.2.515 2.14.825 2.87 1.055.74.23 1.41.19 1.94.114.59-.084 1.839-.751 2.1-.144.26-.607.26-1.13.18-1.229-.08-.101-.28-.155-.59-.312z"/>
+                                    </svg>
+                                    Order on WhatsApp
+                                </button>
+                                
+                                <button type="button" onclick="requestLuxuryCallback()" class="btn-outline-luxury" style="width: 100%;">
+                                    <span>📞</span> Request Callback
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- SUCCESS ORDER CONTAINER OVERLAY (STAYS IN CHECKOUT VIEW AREA) -->
+                    <div id="luxury-order-success-banner" style="display: none; text-align: center; padding: 40px 30px; animation: fadeIn 0.5s ease;" class="glass-luxury-container">
+                        <div style="width: 72px; height: 72px; border-radius: 50%; background: #D4AF37; color: #05140F; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto; font-size: 32px; font-weight: bold; box-shadow: 0 0 30px rgba(212,175,55,0.4);">✓</div>
+                        <h3 class="brand-font" style="font-size: 32px; color: #D4AF37; margin-bottom: 15px; letter-spacing: 0.05em;">Order Placed Successfully!</h3>
+                        <p style="font-size: 16px; color: rgba(248, 247, 243, 0.9); margin-bottom: 30px; font-weight: 300; line-height: 1.65; max-width: 550px; margin-left: auto; margin-right: auto;">
+                            Your luxury hair transformation reservation is secured. Your unique order token is <strong id="luxury-success-order-id" style="color: #D4AF37; font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.05em;">AAR-WAITING</strong>.
+                        </p>
+                        <p style="font-size: 14.5px; color: rgba(248, 247, 243, 0.7); margin-bottom: 35px; line-height: 1.6;">
+                            Our dedicated shipping coordinator will contact you shortly on your WhatsApp to confirm shipping details and provide live tracking links.
+                        </p>
+                        <button onclick="switchTab('page-home')" class="btn-luxury-action sweep-animation" style="display: inline-flex;">
+                            <span>✨</span> Return to Home
+                        </button>
+                    </div>
+
+                    <!-- Hidden elements for backward compatibility with global script references -->
+                    <div id="order-success-banner" style="display: none;"><span id="success-order-id"></span></div>
+                    <div id="checkout-form-wrapper" style="display: none;"></div>
+                    <span id="summary-subtotal" style="display: none;"></span>
+                    <span id="summary-grand-total" style="display: none;"></span>
+
+                </div>
+            </div>
+
+            <!-- PREMIUM GOOGLE MAP SECTION -->
+            <div style="margin-top: 80px;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; color: #F4E6C1; margin-bottom: 35px; letter-spacing: 0.05em;">
+                    Our Office Location
+                </h3>
+                <div class="glass-luxury-container" style="padding: 20px; overflow: hidden;">
+                    <!-- Embedded Premium Styled Map that is fully interactive -->
+                    <div style="width: 100%; height: 400px; border-radius: 16px; overflow: hidden; border: 1.5px solid rgba(212, 175, 55, 0.2); position: relative;">
+                        <!-- Interactive Dark Theme Styled Map Embed -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3493.597992981358!2d78.5204481150143!3d28.895314782314565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390b134da309c071%3A0x633e9bf05d23b378!2sMohalla%20Batwal%2C%20Amroha%2C%20Uttar%20Pradesh%20244221!5e0!3m2!1sen!2sin!4v1658000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; filter: invert(90%) hue-rotate(120deg) contrast(110%);" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(5, 20, 15, 0.9); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 15px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; backdrop-filter: blur(10px);">
+                            <div>
+                                <strong style="color: #FFFFFF; font-size: 14px; display: block; font-family: 'Space Grotesk', sans-serif;">AARANYA™ Headquarters</strong>
+                                <span style="color: rgba(248, 247, 243, 0.7); font-size: 12.5px;">Mohalla Batwal, Amroha, Uttar Pradesh, India - 244221</span>
+                            </div>
+                            <a href="https://maps.google.com/?q=Mohalla+Batwal+Amroha+Uttar+Pradesh+India+244221" target="_blank" class="btn-luxury-action" style="padding: 8px 16px; font-size: 11px;">
+                                Get Directions
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- WHY BUY AARANYA - PREMIUM CARDS -->
+            <div style="margin-top: 100px;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; color: #F4E6C1; margin-bottom: 40px; letter-spacing: 0.05em;">
+                    Why Buy AARANYA™
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                    <div class="why-luxury-card">
+                        <div style="font-size: 28px; margin-bottom: 15px; color: #D4AF37;">🌿</div>
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #F4E6C1; margin-bottom: 8px;">✔ 100% Botanical Ingredients</h4>
+                        <p style="color: rgba(248, 247, 243, 0.7); font-size: 14px; font-weight: 300;">Formulated exclusively with premium organic leaves, therapeutic bark, and bio-active botanical cold-pressed seeds.</p>
+                    </div>
+                    <div class="why-luxury-card">
+                        <div style="font-size: 28px; margin-bottom: 15px; color: #D4AF37;">🧪</div>
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #F4E6C1; margin-bottom: 8px;">✔ Silicone Free</h4>
+                        <p style="color: rgba(248, 247, 243, 0.7); font-size: 14px; font-weight: 300;">Zero chemical build-up. Our natural ingredients enrich the epidermal layers safely without choking hair shafts.</p>
+                    </div>
+                    <div class="why-luxury-card">
+                        <div style="font-size: 28px; margin-bottom: 15px; color: #D4AF37;">🚫</div>
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #F4E6C1; margin-bottom: 8px;">✔ Mineral Oil Free</h4>
+                        <p style="color: rgba(248, 247, 243, 0.7); font-size: 14px; font-weight: 300;">Crafted strictly with cold-pressed botanical lipid foundations instead of synthetic petroleum byproducts.</p>
+                    </div>
+                    <div class="why-luxury-card">
+                        <div style="font-size: 28px; margin-bottom: 15px; color: #D4AF37;">🐰</div>
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #F4E6C1; margin-bottom: 8px;">✔ Cruelty Free</h4>
+                        <p style="color: rgba(248, 247, 243, 0.7); font-size: 14px; font-weight: 300;">Upholding strict ethical research standards. Never tested on animals at any stage of our laboratory pipeline.</p>
+                    </div>
+                    <div class="why-luxury-card">
+                        <div style="font-size: 28px; margin-bottom: 15px; color: #D4AF37;">📦</div>
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #F4E6C1; margin-bottom: 8px;">✔ Premium Packaging</h4>
+                        <p style="color: rgba(248, 247, 243, 0.7); font-size: 14px; font-weight: 300;">Encased inside eco-friendly custom UV-filtering amber bottles with luxurious gold accents to preserve bio-active efficacy.</p>
+                    </div>
+                    <div class="why-luxury-card">
+                        <div style="font-size: 28px; margin-bottom: 15px; color: #D4AF37;">⭐</div>
+                        <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; color: #F4E6C1; margin-bottom: 8px;">✔ Trusted Quality</h4>
+                        <p style="color: rgba(248, 247, 243, 0.7); font-size: 14px; font-weight: 300;">Manufactured inside WHO GMP certified luxury cosmetics laboratories under rigid scientific quality checkpoints.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAFE SHOPPING ASSURANCE -->
+            <div style="margin-top: 80px; text-align: center;" class="glass-luxury-container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; padding: 40px 20px;">
+                    <div>
+                        <div style="font-size: 32px; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(212,175,55,0.2));">🔒</div>
+                        <strong style="display: block; font-size: 15px; color: #FFFFFF; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px;">100% Secure Checkout</strong>
+                        <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Fully encrypted checkout protection logs.</span>
+                    </div>
+                    <div>
+                        <div style="font-size: 32px; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(212,175,55,0.2));">🚚</div>
+                        <strong style="display: block; font-size: 15px; color: #FFFFFF; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px;">Fast Delivery</strong>
+                        <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Dispatched with priority air transit.</span>
+                    </div>
+                    <div>
+                        <div style="font-size: 32px; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(212,175,55,0.2));">⭐</div>
+                        <strong style="display: block; font-size: 15px; color: #FFFFFF; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px;">Premium Customer Support</strong>
+                        <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Direct professional expert consultation.</span>
+                    </div>
+                    <div>
+                        <div style="font-size: 32px; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(212,175,55,0.2));">🤝</div>
+                        <strong style="display: block; font-size: 15px; color: #FFFFFF; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px;">Easy Assistance</strong>
+                        <span style="color: rgba(248, 247, 243, 0.6); font-size: 12.5px;">Instant chat support available daily.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM CTA SECTION -->
+            <div style="margin-top: 100px; text-align: center; background: radial-gradient(circle, rgba(18, 60, 45, 0.5) 0%, transparent 80%); padding: 60px 24px; border-radius: 24px; border: 1.5px solid rgba(212, 175, 55, 0.15);">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(26px, 4vw, 36px); color: #F4E6C1; margin-bottom: 15px; letter-spacing: 0.05em;">
+                    Need Help Before Ordering?
+                </h3>
+                <p style="color: rgba(248, 247, 243, 0.8); font-size: 15.5px; font-weight: 300; max-width: 550px; margin: 0 auto 35px auto; line-height: 1.6;">
+                    Connect immediately with our Senior Hair Care Specialist to clarify questions about formulations, application cycles, or custom dosage plans.
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="requestFreeConsultation()" class="btn-luxury-action sweep-animation">
+                        <span>✨</span> Free Hair Consultation
+                    </button>
+                    <a href="https://wa.me/918077960042?text=Hi%20Aaranya,%20I%20have%20some%20questions%20before%20placing%20my%20order!" target="_blank" class="btn-whatsapp-luxury" style="display: inline-flex; align-items: center; gap: 10px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.665.989 3.3 1.487 5.366 1.488 5.4 0 9.792-4.385 9.795-9.782.002-2.614-1.012-5.071-2.859-6.92C17.063 2.091 14.61 1.077 12.008 1.077c-5.4 0-9.793 4.386-9.796 9.783-.001 2.095.553 4.14 1.602 5.922l-.986 3.6 3.819-.988zm11.233-7.234c-.311-.156-1.839-.908-2.119-1.01-.28-.101-.485-.152-.687.152-.202.303-.783 1.01-.96 1.212-.177.202-.354.228-.665.072-3.033-1.514-4.385-2.678-5.353-4.34-.258-.444.258-.413.738-1.374.08-.163.04-.304-.02-.43-.06-.126-.485-1.17-.665-1.602-.175-.42-.35-.363-.48-.363h-.41c-.14 0-.368.053-.56.262-.19.21-.73.714-.73 1.74 0 1.025.75 2.017.85 2.155.106.14 1.47 2.247 3.565 3.148 1.2.515 2.14.825 2.87 1.055.74.23 1.41.19 1.94.114.59-.084 1.839-.751 2.1-.144.26-.607.26-1.13.18-1.229-.08-.101-.28-.155-.59-.312z"/>
+                        </svg>
+                        <span>Chat on WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- EXCLUSIVE DEDICATED PAGE 5 FOOTER -->
+            <div style="margin-top: 100px; padding-top: 50px; border-top: 1px solid rgba(212,175,55,0.15); display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="aaranya_logo.jpg" alt="Aaranya Logo" style="width: 50px; height: 50px; border-radius: 50%; border: 1.5px solid #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);" referrerPolicy="no-referrer">
+                    <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 600; color: #F4E6C1; letter-spacing: 0.08em;">AARANYA™</span>
+                </div>
+                <div>
+                    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.15em; color: #D4AF37; text-transform: uppercase;">Premium Hair Transformation Company</span>
+                    <p style="color: rgba(248, 247, 243, 0.65); font-size: 13.5px; font-weight: 300; margin-top: 5px;">Rooted in Nature. Crafted for Confidence.</p>
+                </div>
+                <div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; color: #F4E6C1; margin-top: 5px;">
+                    <span>Customer Support: </span><a href="tel:+918077960042" style="font-weight: 600; color: #D4AF37; text-decoration: none;">+91 8077960042</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- INTEGRATED PAGE 5 SCRIPTS (SAFELY ISOLATED AND SELF-CONTAINED) -->
+        <script>
+            let luxuryQuantity = 1;
+            const singleBottlePrice = 699;
+            const mrpPrice = 999;
+            let chosenPaymentMethod = "COD";
+
+            function changeQuantityCount(change) {
+                luxuryQuantity += change;
+                if (luxuryQuantity < 1) luxuryQuantity = 1;
+                if (luxuryQuantity > 10) luxuryQuantity = 10;
+
+                // Sync with the hidden compatible select element for compatibility with standard functions
+                const compSelect = document.getElementById('bottle-qty');
+                if (compSelect) {
+                    compSelect.value = luxuryQuantity;
+                }
+
+                // Update pricing and summary cards
+                updateLuxuryCheckoutView();
+            }
+
+            function updateLuxuryCheckoutView() {
+                const totalLaunchPrice = luxuryQuantity * singleBottlePrice;
+                const totalMRPPrice = luxuryQuantity * mrpPrice;
+                const totalSavingsValue = totalMRPPrice - totalLaunchPrice;
+
+                // Update elements
+                document.getElementById('luxury-qty-val').innerText = luxuryQuantity;
+                document.getElementById('luxury-total-price').innerText = '₹' + totalLaunchPrice;
+                document.getElementById('luxury-mrp-price').innerText = '₹' + totalMRPPrice;
+                document.getElementById('luxury-savings-price').innerText = '₹' + totalSavingsValue;
+                document.getElementById('luxury-summary-qty').innerText = luxuryQuantity + 'x';
+                document.getElementById('luxury-summary-subtotal').innerText = '₹' + totalLaunchPrice + '.00';
+                document.getElementById('luxury-summary-grandtotal').innerText = '₹' + totalLaunchPrice + '.00';
+                document.getElementById('luxury-savings-badge').innerText = 'SAVE ₹' + totalSavingsValue;
+            }
+
+            function selectPaymentMethod(method, element) {
+                chosenPaymentMethod = method;
+                document.getElementById('o-payment-prem').value = method;
+
+                // Remove active classes
+                document.querySelectorAll('.payment-luxury-pill').forEach(pill => {
+                    pill.classList.remove('active');
+                });
+
+                // Add to current
+                element.classList.add('active');
+            }
+
+            function handlePremiumFormSubmit(event) {
+                event.preventDefault();
+
+                // Form values
+                const fullName = document.getElementById('o-name-prem').value;
+                const phone = document.getElementById('o-phone-prem').value;
+                const email = document.getElementById('o-email-prem').value;
+                const address = document.getElementById('o-address-prem').value;
+                const city = document.getElementById('o-city-prem').value;
+                const state = document.getElementById('o-state-prem').value;
+                const pin = document.getElementById('o-pin-prem').value;
+
+                // Generate random unique luxury token
+                const randToken = "AAR-" + Math.floor(1000 + Math.random() * 9000) + "-" + Math.floor(100 + Math.random() * 900);
+                document.getElementById('luxury-success-order-id').innerText = randToken;
+
+                // Display custom gorgeous success overlay, hide the form wrapper grid
+                document.getElementById('checkout-grid-container').style.display = 'none';
+                document.getElementById('luxury-order-success-banner').style.display = 'block';
+
+                // Scroll cleanly
+                document.getElementById('page-order').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            function orderOnWhatsApp() {
+                // Get form inputs
+                const fullName = document.getElementById('o-name-prem').value || "Valued Customer";
+                const phone = document.getElementById('o-phone-prem').value || "";
+                const whatsapp = document.getElementById('o-whatsapp-prem').value || "";
+                const email = document.getElementById('o-email-prem').value || "";
+                const address = document.getElementById('o-address-prem').value || "";
+                const city = document.getElementById('o-city-prem').value || "";
+                const state = document.getElementById('o-state-prem').value || "";
+                const pin = document.getElementById('o-pin-prem').value || "";
+
+                const totalLaunchPrice = luxuryQuantity * singleBottlePrice;
+
+                // Build pre-filled text
+                const textMsg = `Hi AARANYA™! I want to order your Premium Botanical Hair Oil.
+                
+*Order Details:*
+- Name: ${fullName}
+- Quantity: ${luxuryQuantity} bottle(s)
+- Total Price: ₹${totalLaunchPrice}
+- Delivery Address: ${address ? address + ', ' + city + ', ' + state + ' - ' + pin : 'Not specified yet'}
+- Phone: ${phone}
+- WhatsApp: ${whatsapp}
+- Preferred Payment: ${chosenPaymentMethod}
+
+Please confirm my order. Thank you!`;
+
+                const encodedMsg = encodeURIComponent(textMsg);
+                window.open(`https://wa.me/918077960042?text=${encodedMsg}`, '_blank');
+            }
+
+            function requestLuxuryCallback() {
+                const name = document.getElementById('o-name-prem').value || "Valued Customer";
+                const phone = document.getElementById('o-phone-prem').value || "+91 XXXXXXXXXX";
+                
+                showLuxuryNotification(
+                    "Callback Scheduled",
+                    `Thank you, ${name}! A Senior AARANYA™ Hair Care Specialist has scheduled a luxury diagnostic callback to ${phone} within the next 30 minutes.`
+                );
+            }
+
+            function requestFreeConsultation() {
+                showLuxuryNotification(
+                    "Consultation Reserved",
+                    "Your Elite Botanical Hair Care Consultation has been priority reserved! A trichologist specialist will reach out to you directly on WhatsApp (+91 8077960042) shortly."
+                );
+            }
+
+            function showLuxuryNotification(title, message) {
+                document.getElementById('notif-title').innerText = title;
+                document.getElementById('notif-message').innerText = message;
+                document.getElementById('luxury-notification-banner').style.display = 'block';
+            }
+
+            function closeLuxuryNotification() {
+                document.getElementById('luxury-notification-banner').style.display = 'none';
+            }
+        </script>
     </div> <!-- END OF PAGE 5 -->
 
     <!-- 15. FOOTER -->
