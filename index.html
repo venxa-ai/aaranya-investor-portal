@@ -3665,10 +3665,10 @@
                         AI Botanical Wellness Lab
                     </span>
                     <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-4">
-                        Free <span class="premium-glow-text">AI Hair Scanner</span>
+                        Get Your FREE AI <span class="premium-glow-text">Hair Wellness Report</span>
                     </h2>
                     <p class="text-lg text-opacity-80 text-[#F8F7F3] font-light max-w-2xl mx-auto leading-relaxed">
-                        Upload your hair photo and receive your personalized AI Hair Wellness Report in seconds.
+                        Upload your hair photo and receive your personalized AI Hair Wellness Assessment.
                     </p>
                     <div style="width: 80px; height: 1.5px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); margin: 30px auto 0 auto;"></div>
                 </div>
@@ -3734,19 +3734,23 @@
                                 <div class="flex flex-col gap-3">
                                     <div id="status-step-1" class="premium-status-item">
                                         <span class="premium-status-icon">1</span>
-                                        <span class="font-sans text-xs font-light">Scanning Hair...</span>
+                                        <span class="font-sans text-xs font-light">Analyzing Hair...</span>
                                     </div>
                                     <div id="status-step-2" class="premium-status-item">
                                         <span class="premium-status-icon">2</span>
-                                        <span class="font-sans text-xs font-light">Detecting Hair Density...</span>
+                                        <span class="font-sans text-xs font-light">Checking Hair Density...</span>
                                     </div>
                                     <div id="status-step-3" class="premium-status-item">
                                         <span class="premium-status-icon">3</span>
-                                        <span class="font-sans text-xs font-light">Checking Hair Health...</span>
+                                        <span class="font-sans text-xs font-light">Checking Hair Texture...</span>
                                     </div>
                                     <div id="status-step-4" class="premium-status-item">
                                         <span class="premium-status-icon">4</span>
-                                        <span class="font-sans text-xs font-light">Generating Personalized Report...</span>
+                                        <span class="font-sans text-xs font-light">Checking Hair Shine...</span>
+                                    </div>
+                                    <div id="status-step-5" class="premium-status-item">
+                                        <span class="premium-status-icon">5</span>
+                                        <span class="font-sans text-xs font-light">Preparing Personalized Hair Wellness Report...</span>
                                     </div>
                                 </div>
                             </div>
@@ -3806,12 +3810,12 @@
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label class="label-luxury" for="premium-user-email">Email Address (Optional)</label>
+                                        <label class="label-luxury" for="premium-user-email">Email (Optional)</label>
                                         <input type="email" id="premium-user-email" class="input-luxury" placeholder="Enter your email address">
                                     </div>
                                     <div>
-                                        <label class="label-luxury" for="premium-user-city">City *</label>
-                                        <input type="text" id="premium-user-city" required class="input-luxury" placeholder="Enter your city">
+                                        <label class="label-luxury" for="premium-user-city">City (Optional)</label>
+                                        <input type="text" id="premium-user-city" class="input-luxury" placeholder="Enter your city">
                                     </div>
                                 </div>
 
@@ -3865,7 +3869,7 @@
                                         </svg>
                                         <div class="absolute inset-0 flex flex-col items-center justify-center">
                                             <span id="score-value-text" class="font-serif text-3xl font-bold text-[#F4E6C1]">0</span>
-                                            <span class="text-[9px] font-mono tracking-widest text-opacity-50 text-[#F8F7F3] uppercase">SCORE</span>
+                                            <span class="text-[8px] font-mono tracking-wider text-opacity-50 text-[#F8F7F3] uppercase text-center max-w-[80px]">HAIR WELLNESS SCORE</span>
                                         </div>
                                     </div>
                                     <h4 class="font-serif text-lg text-[#F4E6C1] mb-1" id="score-health-label">Analyzing...</h4>
@@ -3925,7 +3929,7 @@
                                         <strong class="text-[#F4E6C1]" id="char-scalp">Looks Healthy</strong>
                                     </div>
                                     <div class="flex justify-between border-b border-white border-opacity-5 pb-2.5 text-sm">
-                                        <span class="text-opacity-60 text-[#F8F7F3] font-light">📉 Visible Hair Fall Signs</span>
+                                        <span class="text-opacity-60 text-[#F8F7F3] font-light">📉 Visible Hair Fall Observation</span>
                                         <strong class="text-[#F4E6C1]" id="char-fall">Minimal</strong>
                                     </div>
                                     <div class="flex justify-between border-b border-white border-opacity-5 pb-2.5 text-sm">
@@ -3953,68 +3957,45 @@
                             <div class="rounded-2xl p-6 relative overflow-hidden border border-[#D4AF37] border-opacity-20" style="background: linear-gradient(135deg, rgba(18,60,45,0.4) 0%, rgba(11,47,36,0.1) 100%);">
                                 <div style="position: absolute; top: -50%; right: -50%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); pointer-events: none;"></div>
                                 <h4 class="font-serif text-lg text-[#F4E6C1] mb-3 flex items-center gap-2">
-                                    <span>✧</span> AI Hair Wellness Summary
+                                    <span>✧</span> Overall Hair Wellness Summary
                                 </h4>
                                 <p class="text-sm font-light text-opacity-95 text-[#F8F7F3] leading-relaxed" id="summary-text">
                                     Based on the visible appearance of the uploaded sample, it appears that your hair fibers maintain optimal cuticular alignment. The image suggests some localized moisture variations.
                                 </p>
                             </div>
 
-                            <!-- Care Plan Tabs -->
+                            <!-- Personalized Hair Care Plan -->
                             <div>
-                                <h4 class="font-serif text-lg text-[#F4E6C1] mb-4">Your Personalized Care Plan</h4>
+                                <h4 class="font-serif text-lg text-[#F4E6C1] mb-4">Personalized Hair Care Tips</h4>
                                 
                                 <!-- Tabs Headers -->
                                 <div class="flex overflow-x-auto border-b border-white border-opacity-10 pb-0 gap-2 scrollbar-none mb-4">
-                                    <div class="care-tab-btn active" onclick="switchCareTab('morning', event)">🌅 Morning Hair Routine</div>
-                                    <div class="care-tab-btn" onclick="switchCareTab('evening', event)">🌃 Evening Hair Routine</div>
-                                    <div class="care-tab-btn" onclick="switchCareTab('oil', event)">🌿 Weekly Oil Routine</div>
-                                    <div class="care-tab-btn" onclick="switchCareTab('wash', event)">🧼 Weekly Hair Wash</div>
-                                    <div class="care-tab-btn" onclick="switchCareTab('massage', event)">💆 Scalp Massage</div>
-                                    <div class="care-tab-btn" onclick="switchCareTab('lifestyle', event)">🥑 Lifestyle Tips</div>
+                                    <div class="care-tab-btn active" onclick="switchCareTab('tips', event)">✨ Personalized Tips</div>
+                                    <div class="care-tab-btn" onclick="switchCareTab('weekly', event)">📅 Weekly Hair Care Routine</div>
+                                    <div class="care-tab-btn" onclick="switchCareTab('lifestyle', event)">🥑 Lifestyle Recommendations</div>
                                 </div>
 
                                 <!-- Tabs Content -->
-                                <div id="care-tab-content-morning" class="care-tab-content active text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
+                                <div id="care-tab-content-tips" class="care-tab-content active text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
                                     <ul class="list-disc pl-5 space-y-2">
-                                        <li>Avoid aggressive detangling when waking up; use a seamless neem wood wide-tooth comb.</li>
+                                        <li>Avoid aggressive detangling; use a seamless neem wood wide-tooth comb.</li>
                                         <li>Apply a light hydration mist or botanical water base to stimulate cuticular swelling safely.</li>
-                                        <li>Protect hair fibers from UV oxidation by wearing a lightweight hat or protective silk scarf if spending extended hours outdoors.</li>
-                                    </ul>
-                                </div>
-                                <div id="care-tab-content-evening" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
-                                    <ul class="list-disc pl-5 space-y-2">
-                                        <li>Apply 2-3 drops of <strong class="text-[#D4AF37]">AARANYA™ Hair Oil</strong> exclusively onto dry, frayed ends to lock in overnight hydration and prevent splitting.</li>
-                                        <li>Perform a gentle 3-minute fingertip cranial manipulation without oil to relax the aponeurosis muscle.</li>
                                         <li>Replace cotton pillowcases with premium silk or satin cases to eliminate high frictional dragging coefficients during sleep.</li>
+                                        <li>Apply 2-3 drops of <strong class="text-[#D4AF37]">AARANYA™ Premium Botanical Hair Oil</strong> exclusively onto dry, frayed ends to lock in overnight hydration and prevent splitting.</li>
                                     </ul>
                                 </div>
-                                <div id="care-tab-content-oil" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
+                                <div id="care-tab-content-weekly" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
                                     <ul class="list-disc pl-5 space-y-2">
-                                        <li>Warm up 1-1.5 tablespoons of <strong class="text-[#D4AF37]">AARANYA™ Premium Botanical Hair Oil</strong>. Warmth expands follicular absorption channels.</li>
-                                        <li>Section your hair and apply the warm oil systematically directly onto your scalp, massaging gently in circular motions.</li>
-                                        <li>Leave the oil on for a minimum of 45 minutes, or overnight in a loose wrap, before cleansing. Recommended frequency: 2-3 times per week.</li>
-                                    </ul>
-                                </div>
-                                <div id="care-tab-content-wash" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
-                                    <ul class="list-disc pl-5 space-y-2">
-                                        <li>Restrict shampoo washings to 2 or 3 times a week max. Over-cleansing strips protective natural sebum.</li>
-                                        <li>Ensure your shampoo is completely sulfate-free, paraben-free, and pH-balanced to avoid follicle corrosion.</li>
-                                        <li>Always wash with lukewarm water and finish with a cold water rinse to snap the cuticular shingles shut, locking in shine.</li>
-                                    </ul>
-                                </div>
-                                <div id="care-tab-content-massage" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
-                                    <ul class="list-disc pl-5 space-y-2">
-                                        <li>Use the 4-minute inversion massage method: bend slightly forward to increase blood flow to follicles.</li>
-                                        <li>Employ firm, deep circular touchpoints using the pads of your fingers (never nails) starting from occipital lines moving up to the crown.</li>
-                                        <li>Combine massage with a wooden comb routine to evenly distribute natural scalp oils down the hair shaft.</li>
+                                        <li><strong class="text-[#D4AF37]">Weekly Oil Routine:</strong> Warm up 1-1.5 tablespoons of AARANYA™ Premium Botanical Hair Oil. Section your hair and apply the warm oil systematically directly onto your scalp, massaging gently in circular motions. Leave on for a minimum of 45 minutes, or overnight in a loose wrap. Recommended frequency: 2-3 times per week.</li>
+                                        <li><strong class="text-[#D4AF37]">Weekly Hair Wash:</strong> Restrict shampoo washings to 2 or 3 times a week max. Over-cleansing strips protective natural sebum. Ensure shampoo is completely sulfate-free, paraben-free, and pH-balanced. Wash with lukewarm water and finish with a cold rinse to snap the cuticular shingles shut, locking in shine.</li>
+                                        <li><strong class="text-[#D4AF37]">Cranial Massage:</strong> Perform a 4-minute inversion massage: bend slightly forward to increase blood flow to follicles. Employ firm, deep circular touchpoints using the pads of your fingers (never nails) starting from occipital lines moving up to the crown.</li>
                                     </ul>
                                 </div>
                                 <div id="care-tab-content-lifestyle" class="care-tab-content text-sm text-opacity-80 text-[#F8F7F3] leading-relaxed font-light">
                                     <ul class="list-disc pl-5 space-y-2">
                                         <li>Prioritize dietary protein intake, specifically rich in sulfur-containing amino acids (lentils, pumpkin seeds, walnuts).</li>
                                         <li>Maintain a daily hydration target of at least 2.5 to 3 liters of pure water to hydrate follicle matrices from within.</li>
-                                        <li>Incorporate stress-mitigation protocols like breathing exercises, as elevated cortisol blocks active follicle division phases.</li>
+                                        <li>Incorporate stress-mitigation protocols like deep breathing or meditation, as elevated cortisol blocks active follicle division phases.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -4051,21 +4032,28 @@
                             </div>
 
                             <!-- Report Action Buttons Row -->
-                            <div class="flex flex-col sm:flex-row gap-4 border-t border-white border-opacity-10 pt-6">
-                                <button onclick="downloadPremiumReport()" class="flex-1 py-4 border border-[#D4AF37] border-opacity-30 hover:border-opacity-60 rounded-xl font-mono text-xs tracking-wider uppercase text-[#D4AF37] hover:bg-white hover:bg-opacity-5 transition duration-300" style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                    📥 Download Report
-                                </button>
-                                <button onclick="scrollToOrderPageAndPreselect()" class="flex-1 btn-premium py-4 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
-                                    🛒 Order Now
-                                </button>
-                                <a id="rep-whatsapp-btn" href="https://wa.me/918077960042" target="_blank" class="flex-1 py-4 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-xl font-mono text-xs font-bold tracking-wider uppercase text-center transition duration-300 flex items-center justify-center gap-2" style="text-decoration: none;">
-                                    💬 Chat on WhatsApp
-                                </a>
+                            <div class="flex flex-col gap-4 border-t border-white border-opacity-10 pt-6">
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <a id="rep-whatsapp-btn" href="https://wa.me/" target="_blank" class="flex-1 py-4 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-xl font-mono text-xs font-bold tracking-wider uppercase text-center transition duration-300 flex items-center justify-center gap-2" style="text-decoration: none; cursor: pointer;">
+                                        🟢 Send Report on WhatsApp
+                                    </a>
+                                    <button onclick="downloadPremiumReport()" class="flex-1 py-4 border border-[#D4AF37] border-opacity-30 hover:border-opacity-60 rounded-xl font-mono text-xs tracking-wider uppercase text-[#D4AF37] hover:bg-white hover:bg-opacity-5 transition duration-300" style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                        📥 Download Report
+                                    </button>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <button onclick="scrollToOrderPageAndPreselect()" class="flex-1 btn-premium py-4 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                                        🛒 Order Now
+                                    </button>
+                                    <a href="https://wa.me/918077960042?text=Hello%20AARANYA%20Team%2C%0AI%20would%20like%20to%20know%20more%20about%20your%20Premium%20Hair%20Transformation%20System." target="_blank" rel="noopener noreferrer" class="flex-1 py-4 border border-white border-opacity-20 hover:border-opacity-40 text-[#F8F7F3] rounded-xl font-mono text-xs font-bold tracking-wider uppercase text-center transition duration-300 flex items-center justify-center gap-2" style="text-decoration: none;">
+                                        💬 Chat with Hair Expert
+                                    </a>
+                                </div>
                             </div>
 
                             <!-- Premium Disclaimer -->
                             <div class="border-t border-white border-opacity-5 pt-6 text-[10px] text-opacity-40 text-[#F8F7F3] font-light leading-relaxed text-center">
-                                <strong>DISCLAIMER:</strong> This AI Hair Wellness Assessment provides educational information only. It is not a medical diagnosis and should not replace professional medical advice. If you experience severe or persistent hair or scalp concerns, please consult a qualified dermatologist.
+                                This AI Hair Wellness Assessment is intended for educational and informational purposes only. It is not a medical diagnosis. Hair health and visible results vary depending on genetics, nutrition, lifestyle, hormonal balance and overall health. For medical concerns, please consult a qualified dermatologist.
                             </div>
                         </div>
                     </div>
@@ -7250,7 +7238,7 @@ Please confirm my order. Thank you!`;
             if (box2) box2.style.display = 'block';
 
             // Reset steps to initial state
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 5; i++) {
                 const step = document.getElementById('status-step-' + i);
                 if (step) {
                     step.className = 'premium-status-item';
@@ -7270,40 +7258,48 @@ Please confirm my order. Thank you!`;
                 if (progressBar) progressBar.style.width = currentPercent + '%';
                 if (progressPct) progressPct.innerText = currentPercent + '%';
 
-                // Manage step visual states
+                // Manage step visual states (5 steps: 20% each)
                 const step1 = document.getElementById('status-step-1');
                 const step2 = document.getElementById('status-step-2');
                 const step3 = document.getElementById('status-step-3');
                 const step4 = document.getElementById('status-step-4');
+                const step5 = document.getElementById('status-step-5');
 
-                if (currentPercent < 25) {
+                if (currentPercent < 20) {
                     if (step1 && !step1.classList.contains('active')) {
                         step1.className = 'premium-status-item active';
                     }
-                } else if (currentPercent >= 25 && currentPercent < 50) {
+                } else if (currentPercent >= 20 && currentPercent < 40) {
                     if (step1 && !step1.classList.contains('completed')) {
                         step1.className = 'premium-status-item completed';
                     }
                     if (step2 && !step2.classList.contains('active')) {
                         step2.className = 'premium-status-item active';
                     }
-                } else if (currentPercent >= 50 && currentPercent < 75) {
+                } else if (currentPercent >= 40 && currentPercent < 60) {
                     if (step2 && !step2.classList.contains('completed')) {
                         step2.className = 'premium-status-item completed';
                     }
                     if (step3 && !step3.classList.contains('active')) {
                         step3.className = 'premium-status-item active';
                     }
-                } else if (currentPercent >= 75 && currentPercent < 100) {
+                } else if (currentPercent >= 60 && currentPercent < 80) {
                     if (step3 && !step3.classList.contains('completed')) {
                         step3.className = 'premium-status-item completed';
                     }
                     if (step4 && !step4.classList.contains('active')) {
                         step4.className = 'premium-status-item active';
                     }
-                } else if (currentPercent >= 100) {
+                } else if (currentPercent >= 80 && currentPercent < 100) {
                     if (step4 && !step4.classList.contains('completed')) {
                         step4.className = 'premium-status-item completed';
+                    }
+                    if (step5 && !step5.classList.contains('active')) {
+                        step5.className = 'premium-status-item active';
+                    }
+                } else if (currentPercent >= 100) {
+                    if (step5 && !step5.classList.contains('completed')) {
+                        step5.className = 'premium-status-item completed';
                     }
                     
                     clearInterval(premiumAnalysisInterval);
@@ -7389,9 +7385,9 @@ Please confirm my order. Thank you!`;
             const mobile = document.getElementById('premium-user-mobile').value;
             const whatsapp = document.getElementById('premium-user-whatsapp').value;
             const email = document.getElementById('premium-user-email').value;
-            const city = document.getElementById('premium-user-city').value;
+            const city = document.getElementById('premium-user-city').value || "India";
             
-            if (!name || !mobile || !whatsapp || !city) {
+            if (!name || !mobile || !whatsapp) {
                 alert("Please fill in all required fields.");
                 return;
             }
@@ -7442,12 +7438,7 @@ Please confirm my order. Thank you!`;
             const drynessVal = drynessOptions[Math.floor(Math.random() * drynessOptions.length)];
             const frizzVal = frizzOptions[Math.floor(Math.random() * frizzOptions.length)];
 
-            // Customize WhatsApp Chat Button Link with results
-            const whatsappBtn = document.getElementById('rep-whatsapp-btn');
-            if (whatsappBtn) {
-                const textMessage = encodeURIComponent(`Hi AARANYA™, my name is ${name} from ${city}. I just completed the AI Hair Wellness Analysis and scored ${randomScore}/100!\nDensity: ${densityVal}\nThickness: ${thicknessVal}\nShine: ${shineVal}\nTexture: ${textureVal}\nDryness: ${drynessVal}\nFrizz: ${frizzVal}\nPlease help me start my hair transformation journey with your Premium Botanical Hair Oil!`);
-                whatsappBtn.href = `https://wa.me/918077960042?text=${textMessage}`;
-            }
+            // WhatsApp Link will be updated below once summaryText is generated
 
             // Populate metadata
             const serialNum = "AAR-SCAN-" + Math.floor(10000 + Math.random() * 90000);
@@ -7480,6 +7471,45 @@ Please confirm my order. Thank you!`;
             }
             
             document.getElementById('summary-text').innerHTML = summaryText;
+
+            // Compile the requested detailed pre-filled report summary message
+            const plainSummary = summaryText.replace(/\*\*/g, '');
+            const waMessage = `Hello,
+
+Here is your FREE AARANYA™ AI Hair Wellness Summary.
+
+Hair Wellness Score:
+${randomScore}/100
+
+Hair Density:
+${densityVal}
+
+Hair Texture:
+${textureVal}
+
+Hair Shine:
+${shineVal}
+
+Summary:
+${plainSummary}
+
+Recommended Product:
+AARANYA™ Premium Botanical Hair Oil
+
+Visit our website for complete recommendations.
+
+Thank you for choosing AARANYA™.`;
+
+            const whatsappBtn = document.getElementById('rep-whatsapp-btn');
+            if (whatsappBtn) {
+                // Ensure number is cleaned of any non-digit chars
+                let cleanWhatsApp = whatsapp.replace(/\D/g, '');
+                // Handle basic Indian prefix if missing
+                if (cleanWhatsApp.length === 10) {
+                    cleanWhatsApp = "91" + cleanWhatsApp;
+                }
+                whatsappBtn.href = `https://wa.me/${cleanWhatsApp}?text=${encodeURIComponent(waMessage)}`;
+            }
 
             // Update Wellness Tier & Score labels
             let healthLabel = "Excellent Health";
